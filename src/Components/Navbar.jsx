@@ -3,10 +3,10 @@ import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import logo from "../icons/logo.png";
 import { Routes, Route, Link } from "react-router-dom";
-import Main from "../Pages/Main.jsx";
-import Articles from "../Pages/Articles.jsx";
-import About from "../Pages/About.jsx";
-import Blog from "../Pages/Blog.jsx";
+import Main from "../Pages/MainPage/Main.jsx";
+import Articles from "../Pages/ArticlesPage/Articles.jsx";
+import About from "../Pages/AboutPage/About.jsx";
+import Blog from "../Pages/BlogPage/Blog.jsx";
 
 const NavBar = () => {
   return (

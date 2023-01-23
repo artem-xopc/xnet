@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import CarouselImg  from '../Components/Carousel';
+import CarouselImg  from '../../Components/Carousel';
 
 const Main = () => {
   return (

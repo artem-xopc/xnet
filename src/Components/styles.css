@@ -4,4 +4,9 @@ a {
 }
 a:hover {
   color: gold;
+}
+
+.blogpost_wrapper {
+  display: flex;
+  margin: 0;
 }/*# sourceMappingURL=styles.css.map */

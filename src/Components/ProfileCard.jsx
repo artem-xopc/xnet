@@ -10,7 +10,7 @@ function ProfileCard(props) {
         <Card style={{ width: '15rem' }} className="me-auto">
         <Card.Img variant="top" src={avatar} />
         <Card.Body>
-          <Card.Title>Артём Хорс</Card.Title>
+          <Card.Title>Артём Романов</Card.Title>
           <Card.Text>
             Создатель Telegram-канала <Card.Link href="https://t.me/log_of_proger">[XProger]</Card.Link>. Ведущий web-разработчик в компании ООО "Икспрогер". 
           </Card.Text>

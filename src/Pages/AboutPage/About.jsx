@@ -1,6 +1,6 @@
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
-import ava from "../icons/avatar.jpg";
-import js from "../icons/js.jpeg";
+import ava from "../../icons/avatar.jpg";
+import js from "../../icons/js.jpeg";
 
 const About = () => {
   return (
