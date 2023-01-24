@@ -6,6 +6,13 @@ a:hover {
   color: gold;
 }
 
+.none_dec {
+  color: #fff;
+}
+.none_dec:hover {
+  color: #fff;
+}
+
 .blogpost_wrapper {
   display: flex;
   margin: 0;

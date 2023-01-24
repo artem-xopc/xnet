@@ -28,9 +28,9 @@ const NavBar = () => {
           <NavbarCollapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/">Главная</Nav.Link>
+              <Nav.Link as={Link} to="/news">Новости</Nav.Link>
               <Nav.Link as={Link} to="/articles">Статьи</Nav.Link>
               <Nav.Link as={Link} to="/about">Обо мне</Nav.Link>
-              <Nav.Link as={Link} to="/news">News</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl
@@ -38,7 +38,7 @@ const NavBar = () => {
                 placeholder="Поиск"
                 className="me-sm-2"
               />
-              <Button variant="outline-info">Поиск</Button>
+              <Button variant="outline-warning">Поиск</Button>
             </Form>
           </NavbarCollapse>
         </Container>

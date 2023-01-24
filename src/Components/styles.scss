@@ -12,6 +12,13 @@ a {
     }
 }
 
+.none_dec {
+    color: $linkColor;
+    &:hover {
+        color: #fff;
+    }
+}
+
 .blogpost_wrapper {
     display: flex;
     margin: 0;

@@ -1,6 +1,8 @@
 import React from "react";
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import postImg from "../../icons/01010102.jpg";
+import Likes from "../Likes";
 import "../styles.css";
 
 function Post(props) {
@@ -14,13 +16,14 @@ function Post(props) {
       <Row xs={2} md={4} lg={3}> 
         <Col>
           <img width="250" height="250" src={postImg} />
+          <Likes />
+          {props.likes}
         </Col>
         <Col>
           {props.message}
         </Col>
       </Row>
       <Row>
-        <Col>{props.likes}</Col>
       </Row>
     </Container>
   );
