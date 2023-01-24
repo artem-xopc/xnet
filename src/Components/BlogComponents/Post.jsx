@@ -5,7 +5,7 @@ import postImg from "../../icons/01010102.jpg";
 import Likes from "../Likes";
 import "../styles.css";
 
-function Post(props) {
+const Post = (props) => {
   return (
     <Container fluid>
       <Row>
@@ -29,4 +29,4 @@ function Post(props) {
   );
 }
 
-export default Post;
+export default Post
