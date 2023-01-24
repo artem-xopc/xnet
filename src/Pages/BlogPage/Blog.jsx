@@ -12,14 +12,14 @@ const Blog = () => {
           <ProfileCard />
         </Col>
         <Col sm={8}>
-          <Post />
+          <Post message="Hi, how are you?" />
         </Col>
         <Col>3 of 1</Col>
       </Row>
       <Row>
         <Col></Col>
         <Col sm={8}>
-          <Post />
+          <Post message="It's my first post in Blog" />
         </Col>
         <Col>3 of 1</Col>
       </Row>

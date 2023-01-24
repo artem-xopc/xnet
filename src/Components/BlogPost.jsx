@@ -11,10 +11,7 @@ function Post(props) {
           <img width="250" height="250" src={postImg} />
         </Col>
         <Col>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem ad a suscipit iste sint, incidunt porro, quas possimus
-          facilis animi voluptatum soluta quis officiis distinctio corporis
-          commodi sed. Ea, velit.
+          {props.message}
         </Col>
       </Row>
     </Container>
