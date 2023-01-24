@@ -6,7 +6,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Main from "../Pages/MainPage/Main.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
-import Blog from "../Pages/BlogPage/Blog.jsx";
+import News from "../Pages/NewsPage/News.jsx";
 
 const NavBar = () => {
   return (
@@ -30,7 +30,7 @@ const NavBar = () => {
               <Nav.Link as={Link} to="/">Главная</Nav.Link>
               <Nav.Link as={Link} to="/articles">Статьи</Nav.Link>
               <Nav.Link as={Link} to="/about">Обо мне</Nav.Link>
-              <Nav.Link as={Link} to="/blog">Блог</Nav.Link>
+              <Nav.Link as={Link} to="/news">News</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl
@@ -48,7 +48,7 @@ const NavBar = () => {
         <Route path="/" element={<Main />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/news" element={<News />} />
       </Routes>
       </div>
     </div>

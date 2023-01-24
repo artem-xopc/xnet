@@ -1,11 +1,16 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import postImg from "../icons/01010102.jpg";
-import "./styles.css";
+import postImg from "../../icons/01010102.jpg";
+import "../styles.css";
 
 function Post(props) {
   return (
     <Container fluid>
+      <Row>
+        <Col>
+          {props.tittle}
+        </Col>
+      </Row>
       <Row xs={2} md={4} lg={3}> 
         <Col>
           <img width="250" height="250" src={postImg} />
@@ -13,6 +18,9 @@ function Post(props) {
         <Col>
           {props.message}
         </Col>
+      </Row>
+      <Row>
+        <Col>{props.likes}</Col>
       </Row>
     </Container>
   );
