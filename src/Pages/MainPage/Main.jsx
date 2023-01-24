@@ -1,12 +1,18 @@
-import { Button } from 'react-bootstrap';
-import CarouselImg  from '../../Components/Carousel';
+import { Button, Col, Container, Row } from "react-bootstrap";
+import CarouselImg from "../../Components/Carousel";
 
 const Main = () => {
   return (
     <div>
       <CarouselImg />
-      <h1>Главная</h1>
-      <Button variant='primary'>Кнопка</Button>
+      <Container fluid>
+        <Row>
+          <Col></Col>
+        </Row>
+        <Row>
+          <Col></Col>
+        </Row>
+      </Container>
     </div>
   );
 };

@@ -8,24 +8,17 @@ const Blog = () => {
     <Container fluid>
       <Row>
         <h1>Страница моего блога</h1>
-        <Col>
+        <Col> 
           <ProfileCard />
         </Col>
-        <Col>
+        <Col sm={8}>
           <Post />
         </Col>
         <Col>3 of 1</Col>
       </Row>
       <Row>
         <Col></Col>
-        <Col>
-          <Post />
-        </Col>
-        <Col>3 of 1</Col>
-      </Row>
-      <Row>
-        <Col></Col>
-        <Col>
+        <Col sm={8}>
           <Post />
         </Col>
         <Col>3 of 1</Col>
