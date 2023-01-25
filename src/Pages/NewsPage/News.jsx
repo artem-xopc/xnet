@@ -4,7 +4,7 @@ import ProfileCard from "../../Components/NewsComponents/ProfileCard";
 import "./main.css";
 
 const News = (props) => {
-  let tittleElement = props.posts.map(t => <Post id={t.id} tittle={t.tittle} message={t.message} />)
+  let tittleElement = props.state.map(t => <Post id={t.id} tittle={t.tittle} message={t.message} />)
 
   return (
     <Container fluid>

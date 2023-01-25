@@ -5,7 +5,7 @@ import NavBar from './Components/Navbar';
 function App(props) {
   return (
     <div className="App">
-      <NavBar posts={props.posts} text={props.text} />
+      <NavBar state={props.state} />
     </div>
   );
 }

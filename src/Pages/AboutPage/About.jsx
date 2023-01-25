@@ -3,8 +3,7 @@ import BasicInfo from "../../Components/AboutComponents/BasicInfo";
 import MainText from "../../Components/AboutComponents/MainText";
 
 const About = (props) => {
-  console.log(props)
-  let textElement = props.text.map(t => <MainText id={t.id} message={t.text} />)
+  let textElement = props.state.map(t => <MainText id={t.id} text={t.text} />)
   return (
     <div>
       <h1>Обо мне</h1>
