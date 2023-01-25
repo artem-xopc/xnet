@@ -6,6 +6,7 @@ import Likes from "../Likes";
 import "../styles.css";
 
 const Post = (props) => {
+  console.log(props)
   return (
     <Container fluid>
       <Row>

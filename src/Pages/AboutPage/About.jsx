@@ -1,9 +1,10 @@
 import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
 import BasicInfo from "../../Components/AboutComponents/BasicInfo";
 import MainText from "../../Components/AboutComponents/MainText";
-import js from "../../icons/js.jpeg";
 
 const About = (props) => {
+  console.log(props)
+  let textElement = props.text.map(t => <MainText id={t.id} message={t.text} />)
   return (
     <div>
       <h1>Обо мне</h1>
@@ -38,7 +39,7 @@ const About = (props) => {
                       <BasicInfo />
                     </Col>
                     <Col sm={8}>
-                      <MainText text={props.text} />
+                      {textElement}
                     </Col>
                   </Row>
                 </Tab.Pane>

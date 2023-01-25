@@ -1,15 +1,13 @@
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const MainText = (props) => {
-
-  let textElement = props.text.map(t => <MainText id={t.id} message={t.message} />)
-
+  console.log(props);
+  // debugger;
   return (
     <Container>
       <Row>
-        <Col>
-            {textElement}
-        </Col>
+        <Col>{props.message}</Col>
       </Row>
     </Container>
   );

@@ -1,12 +1,12 @@
 import { Button, Container, Form, FormControl, Nav, Navbar, NavbarBrand} from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
-import logo from "../icons/logo.png";
 import { Routes, Route, Link } from "react-router-dom";
+import logo from "../icons/logo.png";
 import Main from "../Pages/MainPage/Main.jsx";
+import News from "../Pages/NewsPage/News.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
-import News from "../Pages/NewsPage/News.jsx";
 
 const NavBar = (props) => {
   return (
