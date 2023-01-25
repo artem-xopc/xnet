@@ -8,7 +8,7 @@ import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
 import News from "../Pages/NewsPage/News.jsx";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div>
       <Navbar sticky="top" collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -17,8 +17,8 @@ const NavBar = () => {
           <Nav.Link as={Link} to="/">
           <img
               src={logo}
-              height="50"
-              width="50"
+              height="30"
+              width="200"
               className="d-inline-block align-top"
               alt="logo"
             />
@@ -46,9 +46,9 @@ const NavBar = () => {
       <div>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/news" element={<News posts={props.posts} />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/news" element={<News />} />
+        <Route path="/about" element={<About text={props.text} />} />
       </Routes>
       </div>
     </div>
