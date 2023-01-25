@@ -5,7 +5,7 @@ const MainText = (props) => {
   return (
     <Container>
       <Row>
-        <Col>{props.text}</Col>
+        <Col><p>{props.text}</p></Col>
       </Row>
     </Container>
   );
