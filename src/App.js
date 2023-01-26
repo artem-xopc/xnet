@@ -7,7 +7,7 @@ function App(props) {
   console.log(props)
   return (
     <div className="App">
-      <NavBar state={props.state} addPost={props.addPost} />
+      <NavBar state={props.state} addPost={props.addPost} updatePostText={props.updatePostText} />
     </div>
   );
 }

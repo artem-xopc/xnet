@@ -15,7 +15,7 @@ export const ProfileCard = (props) => {
             Telegram-канал, посвящённый программированию и Web-разработке. 
             На канале публикуются интересные гайды, новости из мира IT и многое другое. 
           </Card.Text>
-          <Button variant="outline-warning"><Card.Link href="https://t.me/log_of_proger" className="none_dec">Перейти в канал</Card.Link></Button>
+          <Button variant="outline-warning"><Card.Link href="https://t.me/log_of_proger" target="_blank" className="none_dec">Перейти в канал</Card.Link></Button>
         </Card.Body>
       </Card>
     )
@@ -30,7 +30,7 @@ export const TelegramCard = (props) => {
       <Card.Text>
         Telegram канал, в котором вы найдёте полезные ресурсы для разработки. 
       </Card.Text>
-      <Button variant="outline-warning"><Card.Link href="https://t.me/+DrL6zHgI_sg4ZWIy" className="none_dec">Перейти в канал</Card.Link></Button>
+      <Button variant="outline-warning"><Card.Link href="https://t.me/+DrL6zHgI_sg4ZWIy" target="_blank" className="none_dec">Перейти в канал</Card.Link></Button>
     </Card.Body>
   </Card>
 )

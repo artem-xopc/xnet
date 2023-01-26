@@ -61,8 +61,8 @@ const About = (props) => {
                               <p>Я также веду несколько Telegram каналов, на которых стараюсь публиковать 
                                 только самую интересную и полезную информацию.</p>
                               <p><a href="https://t.me/log_of_proger" target="_blank"> [XProger] </a> | 
-                              <a href="https://t.me/+DrL6zHgI_sg4ZWIy" target="_blank"> Proger's literature </a> |
-                              <a href="" target="_blank"> [netstalker] </a></p>
+                              <a href="https://t.me/proger_literature" target="_blank"> Proger's literature </a> |
+                              <a href="https://t.me/+tk0d6ShMCyUyZDYy" target="_blank"> [netstalker] </a></p>
                             </Card>
                           </div>
                         </Collapse>
@@ -74,7 +74,7 @@ const About = (props) => {
                   <Work />
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <Blog addPost={props.addPost} />
+                  <Blog addPost={props.addPost} updatePostText={props.updatePostText} />
                   {postElement}
                 </Tab.Pane>
               </Tab.Content>

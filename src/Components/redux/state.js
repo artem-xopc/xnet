@@ -1,3 +1,5 @@
+import { rerender } from "../../render";
+
 let state = {
   news: {
     newsIT: [
@@ -90,6 +92,7 @@ let state = {
         likes: 0,
       },
     ],
+    newPostText: '[netstalker]'
   },
 };
 
@@ -103,6 +106,12 @@ export let addPost = (tittleMessage, postMessage) => {
   };
 
   state.about.posts.push(newPost);
+  rerender(state);
+};
+
+export let updatePostText = (newText) => {
+  state.about.posts = newText;
+  rerender(state);
 };
 
 export default state;
