@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Button, Card, Col, Collapse, Container, Nav, Row, Tab } from "react-bootstrap";
 import BasicInfo from "../../Components/AboutComponents/BasicInfo";
+import Blog from "../../Components/AboutComponents/Blog";
 import MainText from "../../Components/AboutComponents/MainText";
+import Work from "../../Components/AboutComponents/Portfolio";
+
 
 const About = (props) => {
   // получение элементов страницы из локального state
@@ -19,18 +22,15 @@ const About = (props) => {
           bg="dark">
           <Row>
             <Col sm={3}>
-              <Nav variant="warning" className="flex-column mt-2">
+              <Nav variant="pills" className="flex-column mt-2">
                 <Nav.Item variant="dark">
                   <Nav.Link eventKey="first">Основные сведения</Nav.Link>
                 </Nav.Item>
                 <Nav.Item variant="dark">
-                  <Nav.Link eventKey="second">Образование</Nav.Link>
+                  <Nav.Link eventKey="second">Портфолио и опыт работы</Nav.Link>
                 </Nav.Item>
                 <Nav.Item variant="dark">
-                  <Nav.Link eventKey="third">Опыт работы</Nav.Link>
-                </Nav.Item>
-                <Nav.Item variant="dark">
-                  <Nav.Link eventKey="fourth">Портфолио и другое</Nav.Link>
+                  <Nav.Link eventKey="third">Блог</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
@@ -43,20 +43,21 @@ const About = (props) => {
                     </Col>
                     <Col sm={8} style={{marginBottom: "5px"}}>
                       {textElement}
-                      <Button
+                      <Button variant="outline-warning"
                         onClick={() => setOpen(!open)}
-                        aria-controls="interest-collapse-text"
+                        aria-controls="teleg-collapse-text"
                         aria-expanded={open}>
                         Дополнительно
                       </Button>
                       <div style={{minHeight: '150px'}}>
                         <Collapse in={open} dimension="width">
-                          <div id="interest-collapse-text">
-                            <Card body style={{width: "400px"}}>
+                          <div id="teleg-collapse-text">
+                            <Card body style={{width: "500px"}}>
                               <p>Я также веду несколько Telegram каналов, на которых стараюсь публиковать 
-                                только самую интересную информацию.</p>
-                              <p><a href="https://t.me/log_of_proger" target="_blank">[XProger] </a> | 
-                              <a href="https://t.me/+DrL6zHgI_sg4ZWIy" target="_blank"> Proger's literature</a></p>
+                                только самую интересную и полезную информацию.</p>
+                              <p><a href="https://t.me/log_of_proger" target="_blank"> [XProger] </a> | 
+                              <a href="https://t.me/+DrL6zHgI_sg4ZWIy" target="_blank"> Proger's literature </a> |
+                              <a href="" target="_blank"> [netstalker] </a></p>
                             </Card>
                           </div>
                         </Collapse>
@@ -64,9 +65,12 @@ const About = (props) => {
                     </Col>
                   </Row>
                 </Tab.Pane>
-                <Tab.Pane eventKey="second"></Tab.Pane>
-                <Tab.Pane eventKey="third"></Tab.Pane>
-                <Tab.Pane eventKey="fourth"></Tab.Pane>
+                <Tab.Pane eventKey="second">
+                  <Work />
+                </Tab.Pane>
+                <Tab.Pane eventKey="third">
+                  <Blog />
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           </Row>
