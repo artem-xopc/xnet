@@ -2,12 +2,19 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import BlogPost from "./BlogPost";
 
-const Blog = () => {
+const Blog = (props) => {
+    debugger
+    console.log(props)
+    let newTittle = React.createRef()
     let newPost = React.createRef()
 
     let addPost = () => {
-        let text = newPost.current.value;
-        {alert(text)}
+        debugger
+        console.log(props)
+        let tittleText = newTittle.current.value;
+        let postText = newPost.current.value;
+        props.addPost(tittleText)
+        props.addPost(postText)
     }
 
   return (
@@ -18,8 +25,7 @@ const Blog = () => {
             <Form.Control
               size="lg"
               type="text"
-              placeholder="Заголовок"
-            ></Form.Control>
+              placeholder="Заголовок" ref={newTittle}></Form.Control>
           </Form>
         </Col>
       </Row>

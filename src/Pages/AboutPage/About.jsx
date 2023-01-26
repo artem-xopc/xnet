@@ -2,15 +2,18 @@ import { useState } from "react";
 import { Button, Card, Col, Collapse, Container, Nav, Row, Tab } from "react-bootstrap";
 import BasicInfo from "../../Components/AboutComponents/BasicInfo";
 import Blog from "../../Components/AboutComponents/Blog";
+import BlogPost from "../../Components/AboutComponents/BlogPost";
 import MainText from "../../Components/AboutComponents/MainText";
 import Work from "../../Components/AboutComponents/Portfolio";
 
 
 const About = (props) => {
+  debugger
   console.log(props)
   // получение элементов страницы из локального state
   let textElement = props.state.info.map(t => <MainText id={t.id} text={t.text} />);
   let infoElement = props.state.tech_info.map(i => <BasicInfo id={i.id} text={i.text} tech={i.tech} />);
+  let postElement = props.state.posts.map(p => <BlogPost id={p.id} tittle={p.tittle} post={p.post} />)
   
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")
   const [open, setOpen] = useState(false);
@@ -71,7 +74,8 @@ const About = (props) => {
                   <Work />
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <Blog />
+                  <Blog addPost={props.addPost} />
+                  {postElement}
                 </Tab.Pane>
               </Tab.Content>
             </Col>

@@ -9,6 +9,8 @@ import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
 
 const NavBar = (props) => {
+  debugger
+  console.log(props)
   return (
     <div>
       <Navbar sticky="top" collapseOnSelect expand="md" bg="dark" variant="dark">
@@ -48,7 +50,7 @@ const NavBar = (props) => {
         <Route path="/" element={<Main />} />
         <Route path="/news" element={<News state={props.state.news} />} />
         <Route path="/articles" element={<Articles />} />
-        <Route path="/about" element={<About state={props.state.about} />} />
+        <Route path="/about" element={<About state={props.state.about} addPost={props.addPost} />} />
       </Routes>
       </div>
     </div>

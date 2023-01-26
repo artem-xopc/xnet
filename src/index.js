@@ -4,12 +4,17 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import state from "./Components/redux/state";
+import { addPost } from "./Components/redux/state";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App state={state} />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+let rerender = () => {
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App state={state} addPost={addPost} />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+
+rerender();

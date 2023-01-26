@@ -1,33 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import postImg from "../../icons/01010102.jpg";
-import Likes from "../Likes";
+import postImg from "../../icons/binarymap.jpg";
 import "../styles.css";
 
 const Post = (props) => {
-  console.log(props)
   return (
     <Container fluid>
-      <Row>
-        <Col>
-          {props.tittle}
-        </Col>
+      <Row className="mt-3">
+        <Col style={{textAlign: "center"}}><h4><strong>{props.tittle}</strong></h4></Col>
       </Row>
-      <Row xs={2} md={4} lg={3}> 
-        <Col>
-          <img width="250" height="250" src={postImg} />
-          <Likes />
-          {props.likes}
-        </Col>
-        <Col>
-          {props.message}
-        </Col>
+      <Row className="mt-3">
+        <img width="250" height="350" src={postImg} />
       </Row>
-      <Row>
+      <Row className="mt-3">
+        <Col>{props.message}</Col>
       </Row>
+      <Row></Row>
     </Container>
   );
-}
+};
 
-export default Post
+export default Post;

@@ -1,16 +1,16 @@
 import {Row, Col, Container } from "react-bootstrap";
 
-const BlogPost = () => {
+const BlogPost = (props) => {
   return (
     <Container>
       <Row className="mt-5" style={{textAlign: 'center'}}>
         <Col>
-          <strong>Заголовок гипотетического поста</strong>
+          <strong>{props.tittle}</strong>
         </Col>
       </Row>
       <Row className="mt-5">
         <Col>
-          <p>Текст гипотетического поста</p>
+          <p>{props.post}</p>
         </Col>
       </Row>
     </Container>
