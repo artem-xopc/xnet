@@ -7,8 +7,10 @@ import Work from "../../Components/AboutComponents/Portfolio";
 
 
 const About = (props) => {
+  console.log(props)
   // получение элементов страницы из локального state
-  let textElement = props.state.map(t => <MainText id={t.id} text={t.text} />);
+  let textElement = props.state.info.map(t => <MainText id={t.id} text={t.text} />);
+  let infoElement = props.state.tech_info.map(i => <BasicInfo id={i.id} text={i.text} tech={i.tech} />);
   
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")
   const [open, setOpen] = useState(false);
@@ -39,7 +41,7 @@ const About = (props) => {
                 <Tab.Pane eventKey="first">
                   <Row>
                     <Col>
-                      <BasicInfo />
+                      {infoElement}
                     </Col>
                     <Col sm={8} style={{marginBottom: "5px"}}>
                       {textElement}
