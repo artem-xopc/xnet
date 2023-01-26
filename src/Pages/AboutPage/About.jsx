@@ -6,7 +6,6 @@ import MainText from "../../Components/AboutComponents/MainText";
 const About = (props) => {
   // получение элементов страницы из локального state
   let textElement = props.state.map(t => <MainText id={t.id} text={t.text} />);
-  let infoElement = props.state.map(i => <BasicInfo id={i.id} info={i.info} info_tech={i.info_tech} />)
   
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")
   const [open, setOpen] = useState(false);
@@ -40,7 +39,7 @@ const About = (props) => {
                 <Tab.Pane eventKey="first">
                   <Row>
                     <Col>
-                      {infoElement}
+                      <BasicInfo />
                     </Col>
                     <Col sm={8} style={{marginBottom: "5px"}}>
                       {textElement}
