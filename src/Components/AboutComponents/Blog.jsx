@@ -19,6 +19,7 @@ const Blog = (props) => {
 
   let onPostChange = () => {
     let postText = newPost.current.value;
+    debugger
     props.updatePostText(postText);
   }
 
@@ -43,15 +44,13 @@ const Blog = (props) => {
             rows={5}
             placeholder="Текст поста..."
             onChange={onPostChange}
-            value={props.updatePostText}
+            value={props.newPostText}
             className="mt-3"></Form.Control>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="outline-warning" className="mt-3" onClick={addPost}>
-            Опубликовать
-          </Button>
+          <Button variant="outline-warning" className="mt-3" onClick={addPost}>Опубликовать</Button>
         </Col>
         <Col>
           <Form.Group controlId="formFileSm" className="mt-3">

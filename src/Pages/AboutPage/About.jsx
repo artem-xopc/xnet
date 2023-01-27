@@ -74,7 +74,7 @@ const About = (props) => {
                   <Work />
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <Blog addPost={props.addPost} updatePostText={props.updatePostText} />
+                  <Blog addPost={props.addPost} newPostText={props.newPostText} updatePostText={props.updatePostText} />
                   {postElement}
                 </Tab.Pane>
               </Tab.Content>
