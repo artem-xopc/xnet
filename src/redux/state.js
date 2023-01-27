@@ -91,16 +91,20 @@ let store = {
           likes: 0,
         },
       ],
-      newPostText: '[netstalker]'
+      newTittleText: "Are you netstalker?",
+      newPostText: "[netstalker]",
     },
   },
-  getState () {
+  _callSubscriber() {
+    console.log("The Mark II is complited");
+  },
+  getState() {
     return this._state;
   },
-  _callSubscriber () {
-    console.log('The Mark II is complited')
+  subscribe(observer) {
+    this._callSubscriber = observer;
   },
-  addPost (tittleMessage) {
+  _addPost(tittleMessage) {
     debugger
     let newPost = {
       id: 4,
@@ -108,20 +112,26 @@ let store = {
       post: this._state.about.newPostText,
       likes: 0,
     };
-  
-    this._state.about.posts.push(newPost);
-    this._state.about.newPostText = '';
-    this._callSubscriber(this._state);
-  },
-  updatePostText (newText) {
-    this._state.about.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
-  subscribe (observer) {
-    this._callSubscriber = observer;
-  }
-}
 
-window.store = store
+    this._state.about.posts.push(newPost);
+    this._state.about.newPostText = "";
+    this._callSubscriber(this._state);
+  },
+  _updatePostText(newText) {
+    this._state.about.newPostText = newText;
+    this._state.about.newTittleText = newText;
+    this._callSubscriber(this._state);
+  },
+  dispatch(action) {
+    debugger
+    if (action.type === "ADD-POST") {
+      this._addPost();
+    } else if (action.type === "UPDATE-POST") {
+      this._updatePostText(action.newText);
+    }
+  },
+};
+
+window.store = store;
 
 export default store;

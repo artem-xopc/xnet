@@ -5,7 +5,6 @@ import { TelegramCard } from "../../Components/NewsComponents/ProfileCard";
 import "./main.css";
 
 const News = (props) => {
-  debugger
   let ITElement = props.state.newsIT.map((i) => (
     <Post id={i.id} tittle={i.tittle} message={i.message} />
   ));

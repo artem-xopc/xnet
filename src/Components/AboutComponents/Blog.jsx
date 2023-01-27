@@ -3,20 +3,18 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import BlogPost from "./BlogPost";
 
 const Blog = (props) => {
-  debugger
-  console.log(props)
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
   let addPost = () => {
-    let tittleMessage = newTittle.current.value;
-    props.addPost(tittleMessage);
-    // props.addPost(postMessage);
+    debugger
+    let tittleMessage = newTittle.current.value; 
+    props.dispatch({type: "ADD-POST", tittleMessage: tittleMessage});
   };
 
   let onPostChange = () => {
     let postMessage = newPost.current.value;
-    props.updatePostText(postMessage);
+    props.dispatch({type: "UPDATE-POST", newText: postMessage});
   }
 
   return (
@@ -28,7 +26,7 @@ const Blog = (props) => {
               size="lg"
               type="text"
               placeholder="Заголовок..."
-              ref={newTittle}></Form.Control>
+              ref={props.tittleMessage}></Form.Control>
           </Form>
         </Col>
       </Row>

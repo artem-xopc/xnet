@@ -89,11 +89,11 @@ const About = (props) => {
                   <Work />
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <Blog
-                    addPost={props.addPost}
+                  <Blog 
+                    dispatch={props.dispatch}
+                    tittleMessage={props.tittleMessage}
                     newPostText={props.newPostText}
-                    updatePostText={props.updatePostText}
-                  />
+                    />
                   {postElement}
                 </Tab.Pane>
               </Tab.Content>

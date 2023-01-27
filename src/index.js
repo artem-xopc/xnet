@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import store from "./Components/redux/state";
+import store from "./redux/state";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
@@ -10,9 +10,7 @@ let rerender = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} 
-        addPost={store.addPost.bind(store)} 
-        updatePostText={store.updatePostText.bind(store)} />
+        <App state={state} dispatch={store.dispatch.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>
   );
