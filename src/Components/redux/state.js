@@ -1,4 +1,6 @@
-import { rerender } from "../../render";
+let rerender = () => {
+  console.log('The Mark II is complited')
+}
 
 let state = {
   news: {
@@ -96,22 +98,28 @@ let state = {
   },
 };
 
-export let addPost = (tittleMessage, postMessage) => {
-  debugger;
+window.state = state
+
+export const addPost = (tittleMessage) => {
   let newPost = {
     id: 4,
     tittle: tittleMessage,
-    post: postMessage,
+    post: state.about.newPostText,
     likes: 0,
   };
 
   state.about.posts.push(newPost);
-  rerender(state);
+  state.about.newPostText = '';
+  rerender();
 };
 
-export let updatePostText = (newText) => {
-  state.about.posts = newText;
-  rerender(state);
+export const updatePostText = (newText) => {
+  state.about.newPostText = newText;
+  rerender();
 };
+
+export const subscriber = (observer) => {
+  rerender = observer;
+}
 
 export default state;

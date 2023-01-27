@@ -3,24 +3,18 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import BlogPost from "./BlogPost";
 
 const Blog = (props) => {
-  debugger;
-  console.log(props);
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
   let addPost = () => {
-    debugger;
-    console.log(props);
-    let tittleText = newTittle.current.value;
-    let postText = newPost.current.value;
-    props.addPost(tittleText);
-    props.addPost(postText);
+    let tittleMessage = newTittle.current.value;
+    props.addPost(tittleMessage);
+    // props.addPost(postMessage);
   };
 
   let onPostChange = () => {
-    let postText = newPost.current.value;
-    debugger
-    props.updatePostText(postText);
+    let postMessage = newPost.current.value;
+    props.updatePostText(postMessage);
   }
 
   return (
