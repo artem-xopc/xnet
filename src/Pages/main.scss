@@ -1,0 +1,20 @@
+// .blog-wrapper {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     justify-items: center;
+//     margin: 5px;
+// }
+
+// About Page
+
+.nav__item {
+    margin-top: 3px;
+    background-color: #000;
+    border-radius: 5px;
+    &:hover {
+        background-color: rgb(60, 59, 59);
+    }
+    &:active {
+        font-size: 14px;
+    }
+}

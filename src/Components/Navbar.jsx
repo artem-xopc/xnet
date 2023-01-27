@@ -9,6 +9,7 @@ import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
 
 const NavBar = (props) => {
+  debugger
   return (
     <div>
       <Navbar sticky="top" collapseOnSelect expand="md" bg="dark" variant="dark">

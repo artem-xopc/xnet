@@ -1,0 +1,11 @@
+.nav__item {
+  margin-top: 3px;
+  background-color: #000;
+  border-radius: 5px;
+}
+.nav__item:hover {
+  background-color: rgb(60, 59, 59);
+}
+.nav__item:active {
+  font-size: 14px;
+}/*# sourceMappingURL=main.css.map */

@@ -3,6 +3,8 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import BlogPost from "./BlogPost";
 
 const Blog = (props) => {
+  debugger
+  console.log(props)
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
