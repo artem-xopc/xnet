@@ -1,3 +1,7 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_POST = "UPDATE-POST";
+const UPDATE_COMMENT = "UPDATE-COMMENT"
+
 let store = {
   _state: {
     news: {
@@ -75,24 +79,29 @@ let store = {
         {
           id: 3,
           tittle: `Первый пост недонесталкера`,
-          post: `Здравствуйте, друзья, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
+          post: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
           likes: 0,
         },
         {
           id: 2,
           tittle: `Второй пост недонесталкера`,
-          post: `Снова здравствуйте, друзья, продолжаю тестировать велосипедный state.`,
+          post: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
           likes: 0,
         },
         {
           id: 1,
           tittle: `Третий пост недонесталкера`,
-          post: `Здравствуйте, друзья, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
+          post: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
           likes: 0,
         },
       ],
       newTittleText: "Are you netstalker?",
       newPostText: "[netstalker]",
+      comments: [
+        {id: 1, body: `Круто!`},
+        {id: 2, body: `Замечательно!`},
+        {id: 3, body: `Я не user_name, где кнопка регистрации?`},
+      ]
     },
   },
   _callSubscriber() {
@@ -104,33 +113,52 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  _addPost(tittleMessage) {
+  _addPost() {
     debugger
     let newPost = {
       id: 4,
-      tittle: tittleMessage,
+      tittle: this._state.about.newTittleText,
       post: this._state.about.newPostText,
       likes: 0,
     };
 
-    this._state.about.posts.push(newPost);
+    this._state.about.posts.push(newPost);  
+    this._state.about.newTittleText = "";
     this._state.about.newPostText = "";
     this._callSubscriber(this._state);
   },
   _updatePostText(newText) {
     this._state.about.newPostText = newText;
-    this._state.about.newTittleText = newText;
+    // this._state.about.newTittleText = newText;
+    this._callSubscriber(this._state);
+  },
+  _updateCommentBody(body) {
+    this._state.about.newCommentBody = body;
     this._callSubscriber(this._state);
   },
   dispatch(action) {
-    debugger
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       this._addPost();
-    } else if (action.type === "UPDATE-POST") {
+    } else if (action.type === UPDATE_POST) {
       this._updatePostText(action.newText);
+    } else if (action.type === UPDATE_COMMENT) {
+      this._updateCommentBody(action.body);
     }
+
+
+    // switch (action.type) {
+    //   case (action.type === ADD_POST): 
+    //     this._addPost();
+    //     break;
+    //   case (action.type === UPDATE_POST):
+    //     this._updatePostText();
+    //     break;
+    // }
   },
 };
+
+export const addPost = () => ({type: ADD_POST})
+export const updatePost = (text) => ({type: UPDATE_POST, newText: text,})
 
 window.store = store;
 

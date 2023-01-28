@@ -1,20 +1,23 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { addPost, updatePost } from "../../redux/state";
+import { CommentList } from "../Comments/CommentForm/CoomentList";
 import BlogPost from "./BlogPost";
+
 
 const Blog = (props) => {
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
-  let addPost = () => {
+  let addPostFunc = () => {
     debugger
-    let tittleMessage = newTittle.current.value; 
-    props.dispatch({type: "ADD-POST", tittleMessage: tittleMessage});
+    let text = newTittle.current.value; 
+    props.dispatch(addPost(text));
   };
 
-  let onPostChange = () => {
-    let postMessage = newPost.current.value;
-    props.dispatch({type: "UPDATE-POST", newText: postMessage});
+  let onPostChangeFunc = () => {
+    let text = newPost.current.value;
+    props.dispatch(updatePost(text));
   }
 
   return (
@@ -26,7 +29,8 @@ const Blog = (props) => {
               size="lg"
               type="text"
               placeholder="Заголовок..."
-              ref={props.tittleMessage}></Form.Control>
+              ref={newTittle}
+              value={props.newTittleText}></Form.Control>
           </Form>
         </Col>
       </Row>
@@ -37,14 +41,14 @@ const Blog = (props) => {
             ref={newPost}
             rows={5}
             placeholder="Текст поста..."
-            onChange={onPostChange}
+            onChange={onPostChangeFunc}
             value={props.newPostText}
             className="mt-3"></Form.Control>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="outline-warning" className="mt-3" onClick={addPost}>Опубликовать</Button>
+          <Button variant="outline-warning" className="mt-3" onClick={addPostFunc}>Опубликовать</Button>
         </Col>
         <Col>
           <Form.Group controlId="formFileSm" className="mt-3">

@@ -14,6 +14,7 @@ import Blog from "../../Components/AboutComponents/Blog";
 import BlogPost from "../../Components/AboutComponents/BlogPost";
 import MainText from "../../Components/AboutComponents/MainText";
 import Work from "../../Components/AboutComponents/Portfolio";
+import { CommentList } from "../../Components/Comments/CommentForm/CoomentList";
 import "../main.css"
 
 const About = (props) => {
@@ -27,6 +28,7 @@ const About = (props) => {
   let postElement = props.state.posts.map((p) => (
     <BlogPost id={p.id} tittle={p.tittle} post={p.post} />
   ));
+  let commentElement = props.state.comments.map(c => <CommentList id={c.id} body={c.body} />)
 
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")
   const [open, setOpen] = useState(false);
@@ -91,7 +93,7 @@ const About = (props) => {
                 <Tab.Pane eventKey="third">
                   <Blog 
                     dispatch={props.dispatch}
-                    tittleMessage={props.tittleMessage}
+                    newTittleText={props.newTittleText}
                     newPostText={props.newPostText}
                     />
                   {postElement}
