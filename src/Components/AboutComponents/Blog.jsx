@@ -1,19 +1,12 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { addPostCreator, updatePostCreator } from "../../redux/state";
+import { addPostCreator, updatePostCreator } from "../../redux/about_reducer";
 
 const Blog = (props) => {
-  let newTittle = React.createRef();
+  // let newTittle = React.createRef();
   let newPost = React.createRef();
 
-
-  // let addTittle = () => {
-  //   let tittleMessage = newTittle.current.value; 
-  //   props.addPost(tittleMessage)
-  // }
-
   let addPost = () => {
-    debugger
     props.dispatch(addPostCreator());
   };
 
@@ -24,7 +17,7 @@ const Blog = (props) => {
 
   return (
     <Container>
-      <Row>
+      {/* <Row>
         <Col>
           <Form>
             <Form.Control
@@ -34,7 +27,7 @@ const Blog = (props) => {
               ref={newTittle}></Form.Control>
           </Form>
         </Col>
-      </Row>
+      </Row> */}
       <Row>
         <Col>
           <Form.Control

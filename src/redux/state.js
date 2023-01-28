@@ -1,11 +1,6 @@
 import aboutReducer from "./about_reducer";
 import newsReducer from "./news_reducer";
 
-const ADD_POST = "ADD-POST";
-const UPDATE_POST = "UPDATE-POST";
-const ADD_COMMENT = "ADD-COMMENT";
-const UPDATE_COMMENT = "UPDATE-COMMENT";
-
 let store = {
   _state: {
     news: {
@@ -81,23 +76,21 @@ let store = {
       ],
       posts: [
         {
-          id: 3,
+          id: 4,
           tittle: `Первый пост недонесталкера`,
           post: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
-          likes: 0,
+        },
+        {
+          id: 3,
+          tittle: `Второй пост недонесталкера`,
+          post: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
         },
         {
           id: 2,
-          tittle: `Второй пост недонесталкера`,
-          post: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
-          likes: 0,
-        },
-        {
-          id: 1,
           tittle: `Третий пост недонесталкера`,
           post: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
-          likes: 0,
         },
+        {id: 1, post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`},
       ],
       comments: [
         { id: 1, body: `Круто!` },
@@ -123,28 +116,8 @@ let store = {
     this._state.news = newsReducer(this._state.news, action);
     
     this._callSubscriber(this._state);
-
-    // switch (action.type) {
-    //   case (action.type === ADD_POST):
-    //     this._addPost();
-    //     break;
-    //   case (action.type === UPDATE_POST):
-    //     this._updatePostText();
-    //     break;
-    // }
   },
 };
-
-export const addPostCreator = () => ({ type: ADD_POST });
-export const updatePostCreator = (text) => ({
-  type: UPDATE_POST,
-  newText: text,
-});
-export const addCommentCreator = () => ({ type: ADD_COMMENT });
-export const updateCommentCreator = (body) => ({
-  type: UPDATE_COMMENT,
-  body: body,
-});
 
 window.store = store;
 

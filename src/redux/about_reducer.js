@@ -22,9 +22,14 @@ const aboutReducer = (state, action) => {
       // state.newTittleText = newText;
       return state;
     case ADD_COMMENT:
-      let messageBody = state.about.newCommentBody;
+      let newComment = {
+        id: 4,
+        body: messageBody,
+      };
+      
+      state.comments.push(newComment);
+      let messageBody = state.newCommentBody;
       state.newCommentBody = "";
-      state.comments.push({ id: 4, body: messageBody });
       return state;
     case UPDATE_COMMENT:
       state.newCommentBody = action.body;
@@ -33,5 +38,16 @@ const aboutReducer = (state, action) => {
       return state;
   }
 };
+
+export const addPostCreator = () => ({ type: ADD_POST });
+export const updatePostCreator = (text) => ({
+  type: UPDATE_POST,
+  newText: text,
+});
+export const addCommentCreator = () => ({ type: ADD_COMMENT });
+export const updateCommentCreator = (body) => ({
+  type: UPDATE_COMMENT,
+  body: body,
+});
 
 export default aboutReducer;

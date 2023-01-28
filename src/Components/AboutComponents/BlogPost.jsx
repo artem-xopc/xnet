@@ -8,14 +8,14 @@ const BlogPost = (props) => {
 
   return (
     <Container>
-      <Row className="mt-5" style={{textAlign: 'center'}}>
+      {/* <Row className="mt-5" style={{textAlign: 'center'}}>
         <Col>
           <h5><strong>{props.tittle}</strong></h5>
         </Col>
-      </Row>
-      <Row className="mt-3">
+      </Row> */}
+      <Row className="mt-5">
         <Col>
-          <p>{props.post}</p>
+          <p>~$ {props.post}</p>
         </Col>
       </Row>
       <Row>
