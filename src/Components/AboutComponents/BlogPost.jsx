@@ -1,8 +1,11 @@
 import {Row, Col, Container } from "react-bootstrap";
-import { Comment } from "../Comments/CommentForm/Comment";
-import { CommentList } from "../Comments/CommentForm/CoomentList";
+import { Comment } from "../Comments/Comment";
+import { CommentList } from "../Comments/CoomentList";
+import Likes from "../Likes";
 
 const BlogPost = (props) => {
+  debugger
+
   return (
     <Container>
       <Row className="mt-5" style={{textAlign: 'center'}}>
@@ -16,6 +19,7 @@ const BlogPost = (props) => {
         </Col>
       </Row>
       <Row>
+        <Likes />
         <Comment />
         <CommentList />
       </Row>

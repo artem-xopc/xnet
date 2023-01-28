@@ -1,23 +1,25 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { addPost, updatePost } from "../../redux/state";
-import { CommentList } from "../Comments/CommentForm/CoomentList";
-import BlogPost from "./BlogPost";
-
+import { addPostCreator, updatePostCreator } from "../../redux/state";
 
 const Blog = (props) => {
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
-  let addPostFunc = () => {
+
+  // let addTittle = () => {
+  //   let tittleMessage = newTittle.current.value; 
+  //   props.addPost(tittleMessage)
+  // }
+
+  let addPost = () => {
     debugger
-    let text = newTittle.current.value; 
-    props.dispatch(addPost(text));
+    props.dispatch(addPostCreator());
   };
 
-  let onPostChangeFunc = () => {
+  let onPostChange = () => {
     let text = newPost.current.value;
-    props.dispatch(updatePost(text));
+    props.dispatch(updatePostCreator(text));
   }
 
   return (
@@ -29,8 +31,7 @@ const Blog = (props) => {
               size="lg"
               type="text"
               placeholder="Заголовок..."
-              ref={newTittle}
-              value={props.newTittleText}></Form.Control>
+              ref={newTittle}></Form.Control>
           </Form>
         </Col>
       </Row>
@@ -41,23 +42,20 @@ const Blog = (props) => {
             ref={newPost}
             rows={5}
             placeholder="Текст поста..."
-            onChange={onPostChangeFunc}
+            onChange={onPostChange}
             value={props.newPostText}
             className="mt-3"></Form.Control>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="outline-warning" className="mt-3" onClick={addPostFunc}>Опубликовать</Button>
+          <Button variant="outline-warning" className="mt-3" onClick={addPost}>Опубликовать</Button>
         </Col>
         <Col>
           <Form.Group controlId="formFileSm" className="mt-3">
             <Form.Control type="file" size="sm" />
           </Form.Group>
         </Col>
-      </Row>
-      <Row className="mt-3">
-        <BlogPost />
       </Row>
     </Container>
   );

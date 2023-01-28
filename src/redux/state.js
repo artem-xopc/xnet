@@ -1,6 +1,10 @@
+import aboutReducer from "./about_reducer";
+import newsReducer from "./news_reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_POST = "UPDATE-POST";
-const UPDATE_COMMENT = "UPDATE-COMMENT"
+const ADD_COMMENT = "ADD-COMMENT";
+const UPDATE_COMMENT = "UPDATE-COMMENT";
 
 let store = {
   _state: {
@@ -95,13 +99,14 @@ let store = {
           likes: 0,
         },
       ],
+      comments: [
+        { id: 1, body: `Круто!` },
+        { id: 2, body: `Замечательно!` },
+        { id: 3, body: `Я не user_name, где кнопка регистрации?` },
+      ],
+      newCommentBody: "",
       newTittleText: "Are you netstalker?",
       newPostText: "[netstalker]",
-      comments: [
-        {id: 1, body: `Круто!`},
-        {id: 2, body: `Замечательно!`},
-        {id: 3, body: `Я не user_name, где кнопка регистрации?`},
-      ]
     },
   },
   _callSubscriber() {
@@ -113,41 +118,14 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  _addPost() {
-    debugger
-    let newPost = {
-      id: 4,
-      tittle: this._state.about.newTittleText,
-      post: this._state.about.newPostText,
-      likes: 0,
-    };
-
-    this._state.about.posts.push(newPost);  
-    this._state.about.newTittleText = "";
-    this._state.about.newPostText = "";
-    this._callSubscriber(this._state);
-  },
-  _updatePostText(newText) {
-    this._state.about.newPostText = newText;
-    // this._state.about.newTittleText = newText;
-    this._callSubscriber(this._state);
-  },
-  _updateCommentBody(body) {
-    this._state.about.newCommentBody = body;
-    this._callSubscriber(this._state);
-  },
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      this._addPost();
-    } else if (action.type === UPDATE_POST) {
-      this._updatePostText(action.newText);
-    } else if (action.type === UPDATE_COMMENT) {
-      this._updateCommentBody(action.body);
-    }
-
+    this._state.about = aboutReducer(this._state.about, action);
+    this._state.news = newsReducer(this._state.news, action);
+    
+    this._callSubscriber(this._state);
 
     // switch (action.type) {
-    //   case (action.type === ADD_POST): 
+    //   case (action.type === ADD_POST):
     //     this._addPost();
     //     break;
     //   case (action.type === UPDATE_POST):
@@ -157,8 +135,16 @@ let store = {
   },
 };
 
-export const addPost = () => ({type: ADD_POST})
-export const updatePost = (text) => ({type: UPDATE_POST, newText: text,})
+export const addPostCreator = () => ({ type: ADD_POST });
+export const updatePostCreator = (text) => ({
+  type: UPDATE_POST,
+  newText: text,
+});
+export const addCommentCreator = () => ({ type: ADD_COMMENT });
+export const updateCommentCreator = (body) => ({
+  type: UPDATE_COMMENT,
+  body: body,
+});
 
 window.store = store;
 
