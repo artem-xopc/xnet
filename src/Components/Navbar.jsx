@@ -18,8 +18,12 @@ import About from "../Pages/AboutPage/About.jsx";
 import { mainHelper } from "./mainHelper";
 
 const NavBar = (props) => {
+  debugger
   return (
     <div>
+      <div>
+        <mainHelper state={props.state} dispatch={props.dispatch} />
+      </div>
       <Navbar
         sticky="top"
         collapseOnSelect
@@ -78,9 +82,6 @@ const NavBar = (props) => {
             }
           />
         </Routes>
-        <div>
-          <mainHelper state={props.state} dispatch={props.dispatch} />
-        </div>
       </div>
     </div>
   );

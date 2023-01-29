@@ -90,13 +90,17 @@ let store = {
           tittle: `Третий пост недонесталкера`,
           post: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
         },
-        {id: 1, post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`},
+        {
+          id: 1,
+          post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
+          comments: [ `Круто!`, `Замечательно!`, `Я не user_name, где кнопка регистрации?`
+            // { id: 1, body: `Круто!` },
+            // { id: 2, body: `Замечательно!` },
+            // { id: 3, body: `Я не user_name, где кнопка регистрации?` },
+          ],
+        },
       ],
-      comments: [
-        { id: 1, body: `Круто!` },
-        { id: 2, body: `Замечательно!` },
-        { id: 3, body: `Я не user_name, где кнопка регистрации?` },
-      ],
+
       newCommentBody: "",
       newTittleText: "Are you netstalker?",
       newPostText: "[netstalker]",
@@ -114,7 +118,7 @@ let store = {
   dispatch(action) {
     this._state.about = aboutReducer(this._state.about, action);
     this._state.news = newsReducer(this._state.news, action);
-    
+
     this._callSubscriber(this._state);
   },
 };

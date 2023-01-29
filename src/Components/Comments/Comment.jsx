@@ -3,11 +3,9 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { addCommentCreator } from "../../redux/about_reducer";
 
 export const Comment = (props) => { 
-  
   let newComment = React.createRef();
 
   let addComment = () => {
-    debugger
     props.dispatch(addCommentCreator());
   };
   return (

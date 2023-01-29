@@ -14,7 +14,6 @@ import Blog from "../../Components/AboutComponents/Blog";
 import BlogPost from "../../Components/AboutComponents/BlogPost";
 import MainText from "../../Components/AboutComponents/MainText";
 import Work from "../../Components/AboutComponents/Portfolio";
-import { CommentList } from "../../Components/Comments/CoomentList";
 import "../main.css"
 
 const About = (props) => {
@@ -26,7 +25,7 @@ const About = (props) => {
     <BasicInfo id={i.id} text={i.text} tech={i.tech} />
   ));
   let postElement = props.state.posts.map((p) => (
-    <BlogPost id={p.id} tittle={p.tittle} post={p.post} />
+    <BlogPost id={p.id} tittle={p.tittle} post={p.post} comments={p.body} />
   ));
   
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")

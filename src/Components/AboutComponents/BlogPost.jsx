@@ -4,8 +4,6 @@ import { CommentList } from "../Comments/CoomentList";
 import Likes from "../Likes";
 
 const BlogPost = (props) => {
-  debugger
-
   return (
     <Container>
       {/* <Row className="mt-5" style={{textAlign: 'center'}}>
