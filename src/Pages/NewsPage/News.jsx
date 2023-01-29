@@ -5,16 +5,17 @@ import { TelegramCard } from "../../Components/NewsComponents/ProfileCard";
 import "./main.css";
 
 const News = (props) => {
-  let ITElement = props.state.newsIT.map((i) => (
+  debugger
+  let ITElement = props.state.news.newsIT.map((i) => (
     <Post id={i.id} tittle={i.tittle} message={i.message} />
   ));
-  let gamesElement = props.state.newsGames.map((g) => (
+  let gamesElement = props.state.news.newsGames.map((g) => (
     <Post id={g.id} tittle={g.tittle} message={g.message} />
   ));
-  let techElement = props.state.newsTech.map((t) => (
+  let techElement = props.state.news.newsTech.map((t) => (
     <Post id={t.id} tittle={t.tittle} message={t.message} />
   ));
-  let otherElement = props.state.newsOther.map((o) => (
+  let otherElement = props.state.news.newsOther.map((o) => (
     <Post id={o.id} tittle={o.tittle} message={o.message} />
   ));
 

@@ -1,9 +1,9 @@
 import {Row, Col, Container } from "react-bootstrap";
-import Likes from "../Likes";
+import Likes from "../../Likes";
 // import { Comment } from "../Comments/Comment";
 // import { CommentList } from "../Comments/CoomentList";
 
-const BlogPost = (props) => {
+const Posts = (props) => {
   return (
     <Container>
       <Row className="mt-5" style={{textAlign: 'center'}}>
@@ -25,4 +25,4 @@ const BlogPost = (props) => {
   );
 };
 
-export default BlogPost;
+export default Posts;

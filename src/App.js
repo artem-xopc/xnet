@@ -4,11 +4,9 @@ import NavBar from './Components/Navbar';
 import mainHelp from './Components/mainHelper';
 
 function App(props) {
-  debugger
   return (
     <div className="App">
-      <NavBar state={props.state} dispatch={props.dispatch} />
-      <mainHelp />
+      <NavBar store={props.store} state={props.state} dispatch={props.dispatch} />
     </div>
   );
 }

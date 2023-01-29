@@ -1,8 +1,3 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_POST = "UPDATE-POST";
-const ADD_COMMENT = "ADD-COMMENT";
-const UPDATE_COMMENT = "UPDATE-COMMENT";
-
 let initialState = {
   info: [
     {
@@ -35,78 +30,10 @@ let initialState = {
     - IDE: VSCode.`,
     },
   ],
-  posts: [
-    {
-      id: 4,
-      tittle: `Первый пост недонесталкера`,
-      post: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
-    },
-    {
-      id: 3,
-      tittle: `Второй пост недонесталкера`,
-      post: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
-    },
-    {
-      id: 2,
-      tittle: `Третий пост недонесталкера`,
-      post: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
-    },
-    {
-      id: 1,
-      post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
-    },
-  ],
-  newCommentBody: "",
-  newTittleText: "Are you netstalker?",
-  newPostText: "[netstalker]",
 };
 
 const aboutReducer = (state = initialState, action) => {
-  debugger;
-  switch (action.type) {
-    case ADD_POST:
-      let newPost = {
-        id: 4,
-        tittle: state.newTittleText,
-        post: state.newPostText,
-        likes: 0,
-      };
-
-      state.posts.push(newPost);
-      state.newTittleText = "";
-      state.newPostText = "";
       return state;
-    case UPDATE_POST:
-      state.newTittleText = action.newText;
-      state.newPostText = action.newText;
-      return state;
-    case ADD_COMMENT:
-      let newComment = {
-        id: 4,
-        body: state.messageBody,
-      };
-
-      state.comments.push(newComment);
-      // let messageBody = state.newCommentBody;
-      state.newCommentBody = "";
-      return state;
-    case UPDATE_COMMENT:
-      state.newCommentBody = action.body;
-      return state;
-    default:
-      return state;
-  }
 };
-
-export const addPostCreator = () => ({ type: ADD_POST });
-export const updatePostCreator = (text) => ({
-  type: UPDATE_POST,
-  newText: text,
-});
-export const addCommentCreator = () => ({ type: ADD_COMMENT });
-export const updateCommentCreator = (body) => ({
-  type: UPDATE_COMMENT,
-  body: body,
-});
 
 export default aboutReducer;

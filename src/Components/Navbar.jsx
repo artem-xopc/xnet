@@ -15,15 +15,10 @@ import Main from "../Pages/MainPage/Main.jsx";
 import News from "../Pages/NewsPage/News.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
-import mainHelp  from "./mainHelper";
 
 const NavBar = (props) => {
-  debugger
   return (
     <div>
-      <div>
-        <mainHelp state={props.state} dispatch={props.dispatch} />
-      </div>
       <Navbar
         sticky="top"
         collapseOnSelect
@@ -58,6 +53,9 @@ const NavBar = (props) => {
               <Nav.Link as={Link} to="/about">
                 Обо мне
               </Nav.Link>
+              <Nav.Link as={Link} to="/blog">
+                Блог
+              </Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl
@@ -77,10 +75,7 @@ const NavBar = (props) => {
           <Route path="/articles" element={<Articles />} />
           <Route
             path="/about"
-            element={
-              <About state={props.state.about} dispatch={props.dispatch} />
-            }
-          />
+            element={ <About store={props.store} state={props.state.about} /> } />
         </Routes>
       </div>
     </div>

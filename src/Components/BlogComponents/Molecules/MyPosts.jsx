@@ -1,20 +1,18 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { addPostCreator, updatePostCreator } from "../../redux/about_reducer";
-import BlogPost from "./BlogPost";
 
-const Blog = (props) => {
+const MyPosts = (props) => {
+  debugger
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostCreator());
+    props.addPost();
   };
-
   let onPostChange = () => {
     let textTittle = newTittle.current.value;
     let text = newPost.current.value;
-    props.dispatch(updatePostCreator(text, textTittle));
+    props.updateNewPostText(textTittle, text)
   };
 
   return (
@@ -61,4 +59,4 @@ const Blog = (props) => {
   );
 };
 
-export default Blog;
+export default MyPosts;

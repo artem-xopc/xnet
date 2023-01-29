@@ -5,9 +5,10 @@ const Work = () => {
         <Container>
             <Row>
                 <Col>
-                    Портфолио
+                    Портфолио и опыт работы.
                 </Col>
             </Row>
+            <Row><Col>Раздел будет дополнен позже.</Col></Row>
         </Container>
     )
 }

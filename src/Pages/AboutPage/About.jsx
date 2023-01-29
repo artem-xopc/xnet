@@ -9,11 +9,9 @@ import {
   Row,
   Tab,
 } from "react-bootstrap";
-import BasicInfo from "../../Components/AboutComponents/BasicInfo";
-import Blog from "../../Components/AboutComponents/Blog";
-import BlogPost from "../../Components/AboutComponents/BlogPost";
-import MainText from "../../Components/AboutComponents/MainText";
-import Work from "../../Components/AboutComponents/Portfolio";
+import BasicInfo from "../../Components/AboutComponents/Atoms/BasicInfo";
+import MainText from "../../Components/AboutComponents/Atoms/MainText";
+import Work from "../../Components/AboutComponents/Atoms/Portfolio";
 import "../main.css"
 
 const About = (props) => {
@@ -24,9 +22,6 @@ const About = (props) => {
   ));
   let infoElement = props.state.tech_info.map((i) => (
     <BasicInfo id={i.id} text={i.text} tech={i.tech} />
-  ));
-  let postElement = props.state.posts.map((p) => (
-    <BlogPost id={p.id} tittle={p.tittle} post={p.post} comments={p.body} />
   ));
   
   // отслеживание состояния кнопки (используется для раздела "Дополнительно")
@@ -48,9 +43,6 @@ const About = (props) => {
                 </Nav.Item>
                 <Nav.Item className="nav__item">
                   <Nav.Link eventKey="second" style={{color: "white"}}>Портфолио и опыт работы</Nav.Link>
-                </Nav.Item>
-                <Nav.Item className="nav__item">
-                  <Nav.Link eventKey="third" style={{color: "white"}}>Блог</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
@@ -88,15 +80,6 @@ const About = (props) => {
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
                   <Work />
-                </Tab.Pane>
-                <Tab.Pane eventKey="third">
-                  <Blog 
-                    state={props.state.about}
-                    dispatch={props.dispatch}
-                    newTittleText={props.newTittleText}
-                    newPostText={props.newPostText}
-                    />
-                  {postElement}
                 </Tab.Pane>
               </Tab.Content>
             </Col>

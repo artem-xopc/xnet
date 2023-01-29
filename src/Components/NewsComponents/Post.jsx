@@ -5,6 +5,7 @@ import postImg from "../../icons/binarymap.jpg";
 import "../styles.css";
 
 const Post = (props) => {
+  debugger
   return (
     <Container fluid>
       <Row className="mt-3">

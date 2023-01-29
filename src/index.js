@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerender = (state) => {
-  debugger
   root.render(
     <React.StrictMode>
       <BrowserRouter>

@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import ava from "../../icons/ava.jpg";
+import ava from "../../../icons/ava.jpg";
 
 const BasicInfo = (props) => {
   return (
