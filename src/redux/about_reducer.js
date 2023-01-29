@@ -54,11 +54,6 @@ let initialState = {
     {
       id: 1,
       post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
-      comments: [
-        { id: 1, body: `Круто!` },
-        { id: 2, body: `Замечательно!` },
-        { id: 3, body: `Я не user_name, где кнопка регистрации?` },
-      ],
     },
   ],
   newCommentBody: "",
@@ -82,13 +77,13 @@ const aboutReducer = (state = initialState, action) => {
       state.newPostText = "";
       return state;
     case UPDATE_POST:
+      state.newTittleText = action.newText;
       state.newPostText = action.newText;
-      // state.newTittleText = newText;
       return state;
     case ADD_COMMENT:
       let newComment = {
         id: 4,
-        body: state.body,
+        body: state.messageBody,
       };
 
       state.comments.push(newComment);

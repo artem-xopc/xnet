@@ -17,6 +17,7 @@ import Work from "../../Components/AboutComponents/Portfolio";
 import "../main.css"
 
 const About = (props) => {
+  debugger
   // получение элементов страницы из локального state
   let textElement = props.state.info.map((t) => (
     <MainText id={t.id} text={t.text} />

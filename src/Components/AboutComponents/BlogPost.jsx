@@ -1,16 +1,16 @@
 import {Row, Col, Container } from "react-bootstrap";
-import { Comment } from "../Comments/Comment";
-import { CommentList } from "../Comments/CoomentList";
 import Likes from "../Likes";
+// import { Comment } from "../Comments/Comment";
+// import { CommentList } from "../Comments/CoomentList";
 
 const BlogPost = (props) => {
   return (
     <Container>
-      {/* <Row className="mt-5" style={{textAlign: 'center'}}>
+      <Row className="mt-5" style={{textAlign: 'center'}}>
         <Col>
           <h5><strong>{props.tittle}</strong></h5>
         </Col>
-      </Row> */}
+      </Row>
       <Row className="mt-5">
         <Col>
           <p>~$ {props.post}</p>
@@ -18,8 +18,8 @@ const BlogPost = (props) => {
       </Row>
       <Row>
         <Likes />
-        <Comment />
-        <CommentList />
+        {/* <Comment state={props.state} dispatch={props.dispatch} />
+        <CommentList state={props.state} /> */}
       </Row>
     </Container>
   );

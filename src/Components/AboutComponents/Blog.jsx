@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { addPostCreator, updatePostCreator } from "../../redux/about_reducer";
+import BlogPost from "./BlogPost";
 
 const Blog = (props) => {
-  // let newTittle = React.createRef();
+  let newTittle = React.createRef();
   let newPost = React.createRef();
 
   let addPost = () => {
@@ -11,38 +12,44 @@ const Blog = (props) => {
   };
 
   let onPostChange = () => {
+    let textTittle = newTittle.current.value;
     let text = newPost.current.value;
-    props.dispatch(updatePostCreator(text));
-  }
+    props.dispatch(updatePostCreator(text, textTittle));
+  };
 
   return (
     <Container>
-      {/* <Row>
+      <Row>
         <Col>
-          <Form>
-            <Form.Control
-              size="lg"
-              type="text"
-              placeholder="Заголовок..."
-              ref={newTittle}></Form.Control>
-          </Form>
+          <Form.Control
+            as="textarea"
+            ref={newTittle}
+            value={props.newTittleText}
+            size="lg"
+            rows={1}
+            type="text"
+            placeholder="Заголовок..."
+          ></Form.Control>
         </Col>
-      </Row> */}
+      </Row>
       <Row>
         <Col>
           <Form.Control
             as="textarea"
             ref={newPost}
-            rows={5}
-            placeholder="Текст поста..."
-            onChange={onPostChange}
             value={props.newPostText}
-            className="mt-3"></Form.Control>
+            rows={5}
+            onChange={onPostChange}
+            className="mt-3"
+            placeholder="Текст поста..."
+          ></Form.Control>
         </Col>
       </Row>
       <Row>
         <Col>
-          <Button variant="outline-warning" className="mt-3" onClick={addPost}>Опубликовать</Button>
+          <Button variant="outline-warning" className="mt-3" onClick={addPost}>
+            Опубликовать
+          </Button>
         </Col>
         <Col>
           <Form.Group controlId="formFileSm" className="mt-3">

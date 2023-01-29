@@ -15,14 +15,14 @@ import Main from "../Pages/MainPage/Main.jsx";
 import News from "../Pages/NewsPage/News.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
-import { mainHelper } from "./mainHelper";
+import mainHelp  from "./mainHelper";
 
 const NavBar = (props) => {
   debugger
   return (
     <div>
       <div>
-        <mainHelper state={props.state} dispatch={props.dispatch} />
+        <mainHelp state={props.state} dispatch={props.dispatch} />
       </div>
       <Navbar
         sticky="top"
