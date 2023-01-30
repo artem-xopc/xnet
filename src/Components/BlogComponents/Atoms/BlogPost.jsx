@@ -7,7 +7,7 @@ const Posts = (props) => {
   return (
     <Container>
       <Row className="mt-5">
-        <Col>Реклама</Col>
+        <Col></Col>
         <Col sm={6}>
           <Row>
             <Col>
@@ -23,7 +23,7 @@ const Posts = (props) => {
         <CommentList state={props.state} /> */}
           </Row>
         </Col>
-        <Col>Реклама</Col>
+        <Col></Col>
       </Row>
     </Container>
   );

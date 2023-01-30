@@ -72,12 +72,12 @@ const NavBar = (props) => {
       <div>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/news" element={<News state={props.state.news} />} />
+          <Route path="/news" element={<News />} />
           <Route path="/articles" element={<Articles />} />
           <Route
             path="/about"
-            element={ <About store={props.store} state={props.state.about} /> } />
-            <Route path="/blog" element={ <Blog store={props.store} state={props.state.blog} />}  />
+            element={ <About /> } />
+            <Route path="/blog" element={ <Blog />}  />
         </Routes>
       </div>
     </div>

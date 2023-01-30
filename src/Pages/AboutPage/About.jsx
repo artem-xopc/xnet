@@ -1,32 +1,16 @@
-import { useState } from "react";
 import {
-  Button,
-  Card,
   Col,
-  Collapse,
   Container,
   Nav,
   Row,
   Tab,
 } from "react-bootstrap";
-import BasicInfo from "../../Components/AboutComponents/Atoms/BasicInfo";
-import MainText from "../../Components/AboutComponents/Atoms/MainText";
 import Work from "../../Components/AboutComponents/Atoms/Portfolio";
+import AboutContainer from "../../Components/AboutComponents/organism/AboutContainer";
 import "../main.css"
 
 const About = (props) => {
   debugger
-  // получение элементов страницы из локального state
-  let textElement = props.state.info.map((t) => (
-    <MainText id={t.id} text={t.text} />
-  ));
-  let infoElement = props.state.tech_info.map((i) => (
-    <BasicInfo id={i.id} text={i.text} tech={i.tech} />
-  ));
-  
-  // отслеживание состояния кнопки (используется для раздела "Дополнительно")
-  const [open, setOpen] = useState(false);
-
   return (
     <div>
       <Container>
@@ -48,35 +32,8 @@ const About = (props) => {
             </Col>
             <Col sm={9}>
               <Tab.Content className="mt-3">
-                <Tab.Pane eventKey="first">
-                  <Row>
-                    <Col>{infoElement}</Col>
-                    <Col sm={8} style={{ marginBottom: "5px" }}>
-                      {textElement}
-                      <Button
-                        variant="outline-warning"
-                        onClick={() => setOpen(!open)}
-                        aria-controls="teleg-collapse-text"
-                        aria-expanded={open} >Дополнительно</Button>
-                      <div style={{ minHeight: "150px" }}>
-                        <Collapse in={open} dimension="width">
-                          <div id="teleg-collapse-text">
-                            <Card body style={{ width: "500px" }}>
-                              <p>
-                                Я также веду несколько Telegram каналов, на
-                                которых стараюсь публиковать только самую
-                                интересную и полезную информацию.
-                              </p>
-                              <p style={{ textAlign: "end" }}>
-                                <a href="https://t.me/log_of_proger" target="_blank" >[XProger]</a> | 
-                                <a href="https://t.me/proger_literature" target="_blank"> Proger's literature </a>
-                              </p>
-                            </Card>
-                          </div>
-                        </Collapse>
-                      </div>
-                    </Col>
-                  </Row>
+                <Tab.Pane eventKey="first"> 
+                  <AboutContainer />
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
                   <Work />

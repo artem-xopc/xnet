@@ -2,8 +2,6 @@ import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 const MyPosts = (props) => {
-  debugger;
-  console.log(props)
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
