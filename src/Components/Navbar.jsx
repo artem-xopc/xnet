@@ -15,6 +15,7 @@ import Main from "../Pages/MainPage/Main.jsx";
 import News from "../Pages/NewsPage/News.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
+import Blog from "../Pages/BlogPage/Blog";
 
 const NavBar = (props) => {
   return (
@@ -76,6 +77,7 @@ const NavBar = (props) => {
           <Route
             path="/about"
             element={ <About store={props.store} state={props.state.about} /> } />
+            <Route path="/blog" element={ <Blog store={props.store} state={props.state.blog} />}  />
         </Routes>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { ProfileCard, TelegramCard } from "../../NewsComponents/ProfileCard";
 
 const MyPosts = (props) => {
-  debugger
+  debugger;
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
@@ -12,50 +13,63 @@ const MyPosts = (props) => {
   let onPostChange = () => {
     let textTittle = newTittle.current.value;
     let text = newPost.current.value;
-    props.updateNewPostText(textTittle, text)
+    props.updateNewPostText(textTittle, text);
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <Form.Control
-            as="textarea"
-            ref={newTittle}
-            value={props.newTittleText}
-            size="lg"
-            rows={1}
-            type="text"
-            placeholder="Заголовок..."
-          ></Form.Control>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Form.Control
-            as="textarea"
-            ref={newPost}
-            value={props.newPostText}
-            rows={5}
-            onChange={onPostChange}
-            className="mt-3"
-            placeholder="Текст поста..."
-          ></Form.Control>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Button variant="outline-warning" className="mt-3" onClick={addPost}>
-            Опубликовать
-          </Button>
-        </Col>
-        <Col>
-          <Form.Group controlId="formFileSm" className="mt-3">
-            <Form.Control type="file" size="sm" />
-          </Form.Group>
-        </Col>
-      </Row>
-    </Container>
+    <div>
+      <Container>
+        <Row>
+          <Col sm={3}>
+            <ProfileCard />
+          </Col>
+          <Col sm={6}>
+            <Col >
+              <Form.Control
+                as="textarea"
+                ref={newTittle}
+                value={props.newTittleText}
+                size="lg"
+                rows={1}
+                type="text" 
+                className="mt-3"
+                placeholder="Заголовок..."
+              ></Form.Control>
+            </Col>
+            <Col>
+              <Form.Control
+                as="textarea"
+                ref={newPost}
+                value={props.newPostText}
+                rows={5}
+                onChange={onPostChange}
+                className="mt-3"
+                placeholder="Текст поста..."
+              ></Form.Control>
+            </Col>
+            <Row>
+              <Col>
+                <Button
+                  variant="outline-warning"
+                  className="mt-3"
+                  onClick={addPost}
+                >
+                  Опубликовать
+                </Button>
+              </Col>
+              <Col>
+                <Form.Group controlId="formFileSm" className="mt-3">
+                  <Form.Control type="file" size="sm" />
+                </Form.Group>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <TelegramCard />
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
 import React from "react";
-import { addPostCreator, updatePostCreator } from "../../../redux/about_reducer";
+import { addPostCreator, updatePostCreator } from "../../../redux/blog_reducer";
 import MyPosts from "../Molecules/MyPosts";
 
 const BlogContainer = (props) => {
-    debugger
+  debugger
   let state = props.store.getState();
 
   let addPost = () => {
@@ -11,17 +11,19 @@ const BlogContainer = (props) => {
   };
 
   let onPostChange = (textTittle, text) => {
-    let action = updatePostCreator(textTittle, text)
+    let action = updatePostCreator(textTittle, text);
     props.store.dispatch(updatePostCreator(action));
   };
 
   return (
     <div>
-      <MyPosts addPost={addPost} 
-                    updateNewPostText={onPostChange} 
-                    posts={state.about.posts} 
-                    newTittleText={state.about.newTittleText}
-                    newPostText={state.about.newPostText} />
+      <MyPosts
+        addPost={addPost}
+        updateNewPostText={onPostChange}
+        posts={state.blog.posts}
+        newTittleText={state.blog.newTittleText}
+        newPostText={state.blog.newPostText}
+      />
     </div>
   );
 };

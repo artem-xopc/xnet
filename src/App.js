@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBar from './Components/Navbar';
-import mainHelp from './Components/mainHelper';
 
 function App(props) {
   return (
