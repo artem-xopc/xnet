@@ -1,4 +1,4 @@
-import {Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import Likes from "../../Likes";
 // import { Comment } from "../Comments/Comment";
 // import { CommentList } from "../Comments/CoomentList";
@@ -6,20 +6,24 @@ import Likes from "../../Likes";
 const Posts = (props) => {
   return (
     <Container>
-      <Row className="mt-5" style={{textAlign: 'center'}}>
-        <Col>
-          <h5><strong>{props.tittle}</strong></h5>
-        </Col>
-      </Row>
       <Row className="mt-5">
-        <Col>
-          <p>~$ {props.post}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Likes />
-        {/* <Comment state={props.state} dispatch={props.dispatch} />
+        <Col>Реклама</Col>
+        <Col sm={6}>
+          <Row>
+            <Col>
+              <h5 style={{ textAlign: "center" }}>
+                <strong>{props.tittle}</strong>
+              </h5>
+              <p>~$ {props.post}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Likes />
+            {/* <Comment state={props.state} dispatch={props.dispatch} />
         <CommentList state={props.state} /> */}
+          </Row>
+        </Col>
+        <Col>Реклама</Col>
       </Row>
     </Container>
   );

@@ -11,8 +11,7 @@ const BlogContainer = (props) => {
   };
 
   let onPostChange = (textTittle, text) => {
-    let action = updatePostCreator(textTittle, text);
-    props.store.dispatch(updatePostCreator(action));
+    props.store.dispatch(updatePostCreator(textTittle, text));
   };
 
   return (
@@ -21,7 +20,7 @@ const BlogContainer = (props) => {
         addPost={addPost}
         updateNewPostText={onPostChange}
         posts={state.blog.posts}
-        newTittleText={state.blog.newTittleText}
+        newTittleText={state.blog.textTittle}
         newPostText={state.blog.newPostText}
       />
     </div>

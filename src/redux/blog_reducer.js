@@ -31,6 +31,7 @@ const initialState = {
 };
 
 const blogReducer = (state = initialState, action) => {
+  debugger
     switch (action.type) {
       case ADD_POST:
         let newPost = {
@@ -45,8 +46,8 @@ const blogReducer = (state = initialState, action) => {
         state.newPostText = "";
         return state;
       case UPDATE_POST:
-        state.newTittleText = action.newText;
-        state.newPostText = action.newText;
+        state.newTittleText = action.newTtext;
+        state.newPostText = action.newPText;
         return state;
       case ADD_COMMENT:
         let newComment = {
@@ -67,9 +68,10 @@ const blogReducer = (state = initialState, action) => {
   };
   
   export const addPostCreator = () => ({ type: ADD_POST });
-  export const updatePostCreator = (text) => ({
+  export const updatePostCreator = (textTittle, text) => ({
     type: UPDATE_POST,
-    newText: text,
+    newTtext: textTittle,
+    newPText: text,
   });
   export const addCommentCreator = () => ({ type: ADD_COMMENT });
   export const updateCommentCreator = (body) => ({

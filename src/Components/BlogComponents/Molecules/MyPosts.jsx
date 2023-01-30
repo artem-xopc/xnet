@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { ProfileCard, TelegramCard } from "../../NewsComponents/ProfileCard";
 
 const MyPosts = (props) => {
   debugger;
+  console.log(props)
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
@@ -20,9 +20,7 @@ const MyPosts = (props) => {
     <div>
       <Container>
         <Row>
-          <Col sm={3}>
-            <ProfileCard />
-          </Col>
+          <Col sm={3}></Col>
           <Col sm={6}>
             <Col >
               <Form.Control
@@ -53,9 +51,7 @@ const MyPosts = (props) => {
                   variant="outline-warning"
                   className="mt-3"
                   onClick={addPost}
-                >
-                  Опубликовать
-                </Button>
+                >Опубликовать</Button>
               </Col>
               <Col>
                 <Form.Group controlId="formFileSm" className="mt-3">
@@ -64,9 +60,7 @@ const MyPosts = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col>
-            <TelegramCard />
-          </Col>
+          <Col></Col>
         </Row>
       </Container>
     </div>
