@@ -7,18 +7,13 @@ import {
 } from "react-bootstrap";
 import Work from "../../Components/AboutComponents/Atoms/Portfolio";
 import AboutContainer from "../../Components/AboutComponents/organism/AboutContainer";
-import "../main.css"
+import "../main.css" 
 
 const About = (props) => {
-  debugger
   return (
     <div>
       <Container>
-        <Tab.Container
-          id="left-tabs-example"
-          defaultActiveKey="first"
-          bg="dark"
-        >
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first" bg="dark">
           <Row>
             <Col sm={3}>
               <Nav className="flex-column mt-2">

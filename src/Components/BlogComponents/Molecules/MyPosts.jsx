@@ -1,7 +1,15 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import BlogPost from "../Atoms/BlogPost"
 
 const MyPosts = (props) => {
+  debugger
+  console.log(props.posts)
+  
+  let postElement = props.posts.posts.map((p) => (
+    <BlogPost id={p.id} tittle={p.tittle} post={p.post} comments={p.body} />
+  ));
+
   let newTittle = React.createRef();
   let newPost = React.createRef();
 
@@ -59,6 +67,9 @@ const MyPosts = (props) => {
             </Row>
           </Col>
           <Col></Col>
+        </Row>
+        <Row>
+        {postElement}
         </Row>
       </Container>
     </div>

@@ -74,10 +74,8 @@ const NavBar = (props) => {
           <Route path="/" element={<Main />} />
           <Route path="/news" element={<News />} />
           <Route path="/articles" element={<Articles />} />
-          <Route
-            path="/about"
-            element={ <About /> } />
-            <Route path="/blog" element={ <Blog />}  />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </div>
     </div>
