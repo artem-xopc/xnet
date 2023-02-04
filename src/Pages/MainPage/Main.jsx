@@ -1,6 +1,7 @@
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CarouselImg from "../../Components/Carousel";
+import Likes from "../../Components/Likes";
 import { ProfileCard, TelegramCard } from "../../Components/NewsComponents/ProfileCard";
 
 const Main = () => {
@@ -16,7 +17,7 @@ const Main = () => {
           <Col><TelegramCard /></Col>
         </Row>
         <Row>
-          <Col></Col>
+          <Col><Likes /></Col>
         </Row>
       </Container>
     </div>

@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import {Provider} from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-let rerender = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -17,6 +16,3 @@ let rerender = (state) => {
       </BrowserRouter>
     </React.StrictMode>
   );
-};
-
-rerender();

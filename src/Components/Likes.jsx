@@ -5,31 +5,28 @@ import dislike from "../icons/dislike.png";
 import like from "../icons/like.png";
 
 const Likes = () => {
-  const [likes, setLikes] = useState(false)
+  const [likes, setLikes] = useState(0)
 
-  let likeCount = 0;
-  let dislikeCount = 0;
+  let likeCount = likes;
   
-  let setLike = () => {
-    if (setLikes === false) {
-      debugger
-      setLikes = true;
-      likeCount++;
-      console.log(likeCount)
-    }
+  let likeInc = () => {
+    setLikes(likes + 1);
+  };
+
+  let likeDec = () => {
+    setLikes(likes - 1);
   }
   return (
     <Container>
       <Row className="mr-5">
         <Col>
-          <Button variant="outline-secondary" className="m-1" size="sm" onClick={setLike()}>
+          {likeCount}
+          <Button variant="outline-secondary" className="m-1" size="sm" onClick={likeInc}>
             <img src={like} />
           </Button>
-          {likeCount}
-          <Button variant="outline-secondary" className="m-1" size="sm">
+          <Button variant="outline-secondary" className="m-1" size="sm" onClick={likeDec}>
             <img src={dislike} />
           </Button>
-          {dislikeCount}
         </Col>
       </Row>
     </Container>

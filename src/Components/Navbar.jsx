@@ -26,6 +26,7 @@ const NavBar = (props) => {
         expand="md"
         bg="dark"
         variant="dark"
+        style={{borderBottom: "1px solid rgb(171 178 191)"}}
       >
         <Container>
           <NavbarBrand to="/">
@@ -60,6 +61,7 @@ const NavBar = (props) => {
             </Nav>
             <Form className="d-flex">
               <FormControl
+                style={{backgroundColor: "#000", border: "none", color: "rgb(171 178 191)"}}
                 type="text"
                 placeholder="Поиск"
                 className="me-sm-2"
