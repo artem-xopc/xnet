@@ -6,14 +6,8 @@ const UPDATE_COMMENT = "UPDATE-COMMENT";
 const initialState = {
   posts: [
     {
-      id: 4,
-      headline: `Первый пост недонесталкера`,
-      body: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
-    },
-    {
-      id: 3,
-      headline: `Второй пост недонесталкера`,
-      body: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
+      id: 1,
+      body: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
     },
     {
       id: 2,
@@ -21,8 +15,14 @@ const initialState = {
       body: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
     },
     {
-      id: 1,
-      body: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
+      id: 3,
+      headline: `Второй пост недонесталкера`,
+      body: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
+    },
+    {
+      id: 4,
+      headline: `Первый пост недонесталкера`,
+      body: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
     },
   ],
   newCommentBody: "",
@@ -31,24 +31,20 @@ const initialState = {
 };
 
 const blogReducer = (state = initialState, action) => {
-  // debugger
-  let stateCopy = { ...state, posts: [...state.posts] };
   switch (action.type) {
     case ADD_POST:
-      let newPost = {
-        id: 4,
-        headline: state.newHeadline,
-        body: state.newPostBody,
-        likes: 0,
-      };
-      stateCopy.posts.push(newPost);
-      stateCopy.newHeadline = "";
-      stateCopy.newPostBody = "";
-      return stateCopy;
+      return {
+        ...state, 
+        posts: [ { id: 4, headline: state.newHeadline, body: state.newPostBody, likes: 0, }, ...state.posts],
+        newHeadline: "",
+        newPostBody: "",
+      }
     case UPDATE_POST: 
-      stateCopy.newHeadline = action.newTtext;
-      stateCopy.newPostBody = action.newPText;
-      return stateCopy;
+      return {
+        ...state,
+        newHeadline: action.newTtext,
+        newPostBody: action.newPText,
+      }
     case ADD_COMMENT:
       let newComment = {
         id: 4,

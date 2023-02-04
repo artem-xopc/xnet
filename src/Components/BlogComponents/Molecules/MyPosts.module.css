@@ -1,0 +1,34 @@
+.headline {
+    margin-top: 15px;
+    background-color: black;
+    border: none;
+    color: white;
+    resize: none;
+}
+
+.headline:active {
+    margin-top: 15px;
+    background-color: black;
+    color: black;
+    font-weight: bold;
+}
+
+.post {
+    margin-top: 15px;
+    background-color: black;
+    border: none;
+    color: white;
+    resize: none;
+}
+
+.post:active {
+    margin-top: 15px;
+    background-color: black;
+    color: black;
+}
+
+.filesInput {
+    margin-top: 15px;
+    background-color: transparent;
+}
+

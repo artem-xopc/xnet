@@ -16,6 +16,7 @@ import News from "../Pages/NewsPage/News.jsx";
 import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
 import Blog from "../Pages/BlogPage/Blog";
+import Users from "../Pages/Users/Users";
 
 const NavBar = (props) => {
   return (
@@ -78,6 +79,7 @@ const NavBar = (props) => {
           <Route path="/articles" element={<Articles />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </div>
     </div>
