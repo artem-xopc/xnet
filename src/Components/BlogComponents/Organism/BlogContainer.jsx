@@ -4,18 +4,20 @@ import MyPosts from "../Molecules/MyPosts";
 import { connect } from "react-redux";
 
 
-let mapStateToProps = (state) => {
+let mapStateToProps = ({blog}) => {
+  // debugger
   return {
-    posts: state.blog,
-    newTittleText: state.blog.newTittleText,
-    newPostText: state.blog.newPostText,
+    posts: blog.posts,
+    newHeadline: blog.newHeadline,
+    newPostBody: blog.newPostBody,
   };
 };
 
 let mapDispatchToProps = (dispatch) => {
+  // debugger
   return {
     addPost: () => dispatch(addPostCreator()),
-    updateNewPostText: (textTittle, text) => dispatch(updatePostCreator(textTittle, text)),
+    updateNewPostText: (headline, body) => dispatch(updatePostCreator(headline, body)),
   };
 };
 

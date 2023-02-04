@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import BlogPost from "../Atoms/BlogPost"
 
 const MyPosts = (props) => {
-  // debugger
+  debugger
   // console.log(props.posts)
   
-  let postElement = props.posts.posts.map((p) => (
-    <BlogPost id={p.id} tittle={p.tittle} post={p.post} comments={p.body} />
+  let postElement = props.posts.map((p) => (
+    <BlogPost key={p.id} id={p.id} tittle={p.headline} post={p.body} comments={p.body} />
   ));
 
-  let newTittle = React.createRef();
-  let newPost = React.createRef();
+  const [headline, setHeadline] = useState()
+
+  let newHeadline = React.createRef();
+  let newBody = React.createRef();
 
   let addPost = () => {
     props.addPost();
   };
   let onPostChange = () => {
-    let textTittle = newTittle.current.value;
-    let text = newPost.current.value;
-    props.updateNewPostText(textTittle, text);
+    let headline = newHeadline.current.value;
+    let body = newBody.current.value;
+    props.updateNewPostText(headline, body);
   };
 
   return (
@@ -31,7 +33,7 @@ const MyPosts = (props) => {
             <Col >
               <Form.Control
                 as="textarea"
-                ref={newTittle}
+                ref={newHeadline}
                 value={props.newTittleText}
                 size="lg"
                 rows={1}
@@ -43,7 +45,7 @@ const MyPosts = (props) => {
             <Col>
               <Form.Control
                 as="textarea"
-                ref={newPost}
+                ref={newBody}
                 value={props.newPostText}
                 rows={5}
                 onChange={onPostChange}

@@ -7,46 +7,47 @@ const initialState = {
   posts: [
     {
       id: 4,
-      tittle: `Первый пост недонесталкера`,
-      post: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
+      headline: `Первый пост недонесталкера`,
+      body: `Здравствуй, user_name, данный пост является первым, но не единственным постом на данном ресурсе. Тестирую велосипедный state.`,
     },
     {
       id: 3,
-      tittle: `Второй пост недонесталкера`,
-      post: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
+      headline: `Второй пост недонесталкера`,
+      body: `Снова здравствуй, user_name, продолжаю тестировать велосипедный state.`,
     },
     {
       id: 2,
-      tittle: `Третий пост недонесталкера`,
-      post: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
+      headline: `Третий пост недонесталкера`,
+      body: `Здравствуй, user_name, как известно, Бог любит троицу, поэтому данный пост является третим захардкоженным в велосипедном state постом.`,
     },
     {
       id: 1,
-      post: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
+      body: `Что ж, может быть, отказаться от заголовков - это хорошая идея, посмотрим как будет дальше (28.01.2023).`,
     },
   ],
   newCommentBody: "",
-  newTittleText: "Are you netstalker?",
-  newPostText: "[netstalker]",
+  newHeadline: "",
+  newPostBody: "",
 };
 
 const blogReducer = (state = initialState, action) => {
+  // debugger
   let stateCopy = { ...state, posts: [...state.posts] };
   switch (action.type) {
     case ADD_POST:
       let newPost = {
         id: 4,
-        tittle: stateCopy.newTittleText,
-        post: stateCopy.newPostText,
+        headline: state.newHeadline,
+        body: state.newPostBody,
         likes: 0,
       };
       stateCopy.posts.push(newPost);
-      stateCopy.newTittleText = "";
-      stateCopy.newPostText = "";
+      stateCopy.newHeadline = "";
+      stateCopy.newPostBody = "";
       return stateCopy;
     case UPDATE_POST: 
-      stateCopy.newTittleText = action.newTtext;
-      stateCopy.newPostText = action.newPText;
+      stateCopy.newHeadline = action.newTtext;
+      stateCopy.newPostBody = action.newPText;
       return stateCopy;
     case ADD_COMMENT:
       let newComment = {
@@ -67,10 +68,10 @@ const blogReducer = (state = initialState, action) => {
 };
 
 export const addPostCreator = () => ({ type: ADD_POST });
-export const updatePostCreator = (textTittle, text) => ({
+export const updatePostCreator = (headline, body) => ({
   type: UPDATE_POST,
-  newTtext: textTittle,
-  newPText: text,
+  newTtext: headline,
+  newPText: body,
 });
 export const addCommentCreator = () => ({ type: ADD_COMMENT });
 export const updateCommentCreator = (body) => ({
