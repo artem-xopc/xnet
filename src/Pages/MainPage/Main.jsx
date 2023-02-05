@@ -1,7 +1,7 @@
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CarouselImg from "../../Components/Carousel";
-import Likes from "../../Components/Likes";
+import Likes from "../../Components/UI/Likes/Likes";
 import { ProfileCard, TelegramCard } from "../../Components/NewsComponents/ProfileCard";
 
 const Main = () => {

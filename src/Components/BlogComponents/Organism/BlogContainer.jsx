@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 
 let mapStateToProps = ({blog}) => {
-  // debugger
   return {
     posts: blog.posts,
     newHeadline: blog.newHeadline,

@@ -1,5 +1,5 @@
 import { Row, Col, Container } from "react-bootstrap";
-import Likes from "../../Likes";
+import Likes from "../../UI/Likes/Likes";
 // import { Comment } from "../Comments/Comment";
 // import { CommentList } from "../Comments/CoomentList";
 
