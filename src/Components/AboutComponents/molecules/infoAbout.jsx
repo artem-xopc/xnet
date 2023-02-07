@@ -29,7 +29,7 @@ const InfoAbout = (props) => {
           <div style={{ minHeight: "150px" }}>
             <Collapse in={open} dimension="width">
               <div id="teleg-collapse-text">
-                <Card body style={{ width: "500px" }}>
+                <Card body style={{ width: "500px", backgroundColor: "rgb(32, 36, 43)", marginTop: "3px" }}>
                   <p>
                     Я также веду несколько Telegram каналов, на которых стараюсь
                     публиковать только самую интересную и полезную информацию.

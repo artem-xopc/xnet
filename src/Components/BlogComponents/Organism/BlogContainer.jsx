@@ -13,7 +13,6 @@ let mapStateToProps = ({blog}) => {
 };
 
 let mapDispatchToProps = (dispatch) => {
-  // debugger
   return {
     addPost: () => dispatch(addPostCreator()),
     updateNewPostText: (headline, body) => dispatch(updatePostCreator(headline, body)),

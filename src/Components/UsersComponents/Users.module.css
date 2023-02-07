@@ -1,0 +1,12 @@
+.item {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid rgb(0, 102, 255);
+    border-radius: 15px;
+}
+
+.ava {
+    margin: 5px;
+    width: 150px;
+    border-radius: 25px;
+}

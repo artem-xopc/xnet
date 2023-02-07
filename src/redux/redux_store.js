@@ -8,7 +8,7 @@ let rootReducers = combineReducers({
     about: aboutReducer,
     news: newsReducer,
     blog: blogReducer,
-    users: userReducer,
+    usersPage: userReducer,
 })
 
 const store = legacy_createStore(rootReducers);
