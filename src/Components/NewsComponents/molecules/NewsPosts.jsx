@@ -2,17 +2,17 @@ import { Col, Container, Row, Tab, Tabs } from "react-bootstrap"
 import Post from "../Post";
 import { ProfileCard, TelegramCard } from "../ProfileCard"
 
-const NewsPosts = (props) => {
-    let ITElement = props.news.news.newsIT.map((i) => (
+const NewsPosts = ({news}) => {
+    let ITElement = news.news.newsIT.map((i) => (
         <Post key={i.id} id={i.id} tittle={i.tittle} message={i.message} />
       ));
-    let gamesElement = props.news.news.newsGames.map((g) => (
+    let gamesElement = news.news.newsGames.map((g) => (
         <Post key={g.id} id={g.id} tittle={g.tittle} message={g.message} />
       ));
-    let techElement = props.news.news.newsTech.map((t) => (
+    let techElement = news.news.newsTech.map((t) => (
         <Post key={t.id} id={t.id} tittle={t.tittle} message={t.message} />
       ));
-    let otherElement = props.news.news.newsOther.map((o) => (
+    let otherElement = news.news.newsOther.map((o) => (
         <Post key={o.id} id={o.id} tittle={o.tittle} message={o.message} />
       ));
     return (
