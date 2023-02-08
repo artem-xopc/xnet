@@ -6,12 +6,12 @@
     resize: none;
 }
 
-.headline:active {
+/* .headline:active {
     margin-top: 15px;
     background-color: black;
     color: black;
     font-weight: bold;
-}
+} */
 
 .post {
     margin-top: 15px;
@@ -21,11 +21,11 @@
     resize: none;
 }
 
-.post:active {
+/* .post:active {
     margin-top: 15px;
     background-color: black;
     color: black;
-}
+} */
 
 .filesInput {
     margin-top: 15px;
