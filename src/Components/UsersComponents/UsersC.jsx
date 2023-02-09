@@ -23,11 +23,11 @@ class Users extends React.Component {
       <Container>
         <Row className={us.wrapper}>
           <Col>
-            <Row sm={2}>
+            {/* <Row sm={2}>
               <Button variant="outline-info" onClick={this.getUsers}>
                 Получить пользователей
               </Button>
-            </Row>
+            </Row> */}
             <Row sm={3}>
               <InputGroup size="sm" className="mt-3" bg="000">
                 <InputGroup.Text id="inputGroup-sizing-sm">Поиск</InputGroup.Text>
