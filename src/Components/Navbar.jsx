@@ -1,8 +1,8 @@
 import {
   Button,
   Container,
-  Form,
-  FormControl,
+  // Form,
+  // FormControl,
   Nav,
   Navbar,
   NavbarBrand,
@@ -60,15 +60,16 @@ const NavBar = (props) => {
                 Блог
               </Nav.Link>
             </Nav>
-            <Form className="d-flex">
+            {/* <Form className="d-flex">
               <FormControl
                 style={{backgroundColor: "#000", border: "none", color: "rgb(171 178 191)"}}
                 type="text"
                 placeholder="Поиск"
                 className="me-sm-2"
               />
-              <Button variant="outline-warning">Поиск</Button>
-            </Form>
+            </Form> */}
+              <Button variant="outline-info" style={{marginRight: "3px"}}>Login</Button>
+              <Button variant="outline-warning">Sign Up</Button>
           </NavbarCollapse>
         </Container>
       </Navbar>

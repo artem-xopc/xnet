@@ -6,31 +6,23 @@ import Select from "../UI/Select/Select";
 import us from "./Users.module.css";
 
 class Users extends React.Component {
-
-  constructor (props) {
-    super(props);
-    axios
-          .get("https://jsonplaceholder.typicode.com/users")
-          .then((response) => {
-            this.props.setUsers(response.data);
-          });
-    };
-
-
+  
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      this.props.setUsers(response.data);
+    });
+  }
 
   render() {
     return (
       <Container>
         <Row className={us.wrapper}>
           <Col>
-            {/* <Row sm={2}>
-              <Button variant="outline-info" onClick={this.getUsers}>
-                Получить пользователей
-              </Button>
-            </Row> */}
             <Row sm={3}>
               <InputGroup size="sm" className="mt-3" bg="000">
-                <InputGroup.Text id="inputGroup-sizing-sm">Поиск</InputGroup.Text>
+                <InputGroup.Text id="inputGroup-sizing-sm">
+                  Поиск
+                </InputGroup.Text>
                 <Form.Control
                   aria-label="Small"
                   aria-describedby="inputGroup-sizing-sm"
@@ -89,6 +81,6 @@ class Users extends React.Component {
       </Container>
     );
   }
-};
+}
 
 export default Users;
