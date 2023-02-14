@@ -12,7 +12,7 @@ let mapStateToProps = ({blog}) => {
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) => { 
   return {
     addPost: () => dispatch(addPostCreator()),
     updateNewPostText: (headline, body) => dispatch(updatePostCreator(headline, body)),

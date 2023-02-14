@@ -11,7 +11,7 @@ const MyPosts = (props) => {
     <BlogPost key={p.id} id={p.id} tittle={p.headline} post={p.body} comments={p.body} />
   ));
 
-  const [headline, setHeadline] = useState()
+  const [headline, setHeadline] = useState() 
 
   let newheadline = React.createRef();
   let newBody = React.createRef();

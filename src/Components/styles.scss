@@ -12,14 +12,7 @@ a {
     text-decoration: none;
     color: $linkColor;
     &:hover {
-        color: gold;
-    }
-}
-
-.none_dec {
-    color: $linkColor;
-    &:hover {
-        color: #fff;
+        color: $linkColor;
     }
 }
 
