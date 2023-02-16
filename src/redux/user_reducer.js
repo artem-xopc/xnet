@@ -30,6 +30,8 @@ let initialState = {
     //   password: "",
     // },
   ],
+  pageSize: 10,
+  totalCount: 0,
 };
 
 const userReducer = (state = initialState, action) => {

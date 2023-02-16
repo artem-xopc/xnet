@@ -17,6 +17,7 @@ import Articles from "../Pages/ArticlesPage/Articles.jsx";
 import About from "../Pages/AboutPage/About.jsx";
 import Blog from "../Pages/BlogPage/Blog";
 import Users from "../Pages/Users/Users";
+import Login from "../Pages/Login/Login";
 
 const NavBar = (props) => {
   return (
@@ -27,7 +28,7 @@ const NavBar = (props) => {
         expand="md"
         bg="dark"
         variant="dark"
-        style={{borderBottom: "1px solid rgb(171 178 191)"}}
+        style={{ borderBottom: "1px solid rgb(171 178 191)" }}
       >
         <Container>
           <NavbarBrand to="/">
@@ -68,8 +69,14 @@ const NavBar = (props) => {
                 className="me-sm-2"
               />
             </Form> */}
-              <Button variant="outline-info" style={{marginRight: "3px"}}>Login</Button>
+            <Nav.Link as={Link} to="/login">
+              <Button variant="outline-info" style={{ marginRight: "3px" }}>
+                Login
+              </Button>
+            </Nav.Link>
+            <Nav.Link as={Link} to="/login">
               <Button variant="outline-warning">Sign Up</Button>
+            </Nav.Link>
           </NavbarCollapse>
         </Container>
       </Navbar>
@@ -81,6 +88,7 @@ const NavBar = (props) => {
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>

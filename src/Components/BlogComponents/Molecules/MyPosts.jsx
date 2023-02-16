@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import BlogPost from "../Atoms/BlogPost"
-import mp from "./MyPosts.module.css"
+import Color from "../../UI/ColorPicker/Color";
+import BlogPost from "../Atoms/BlogPost";
+import mp from "./MyPosts.module.css";
 
 const MyPosts = (props) => {
-  debugger
+  debugger;
   // console.log(props.posts)
-  
+
   let postElement = props.posts.map((p) => (
-    <BlogPost key={p.id} id={p.id} tittle={p.headline} post={p.body} comments={p.body} />
+    <BlogPost
+      key={p.id}
+      id={p.id}
+      tittle={p.headline}
+      post={p.body}
+      comments={p.body}
+    />
   ));
 
-  const [headline, setHeadline] = useState() 
+  const [headline, setHeadline] = useState();
 
   let newheadline = React.createRef();
   let newBody = React.createRef();
@@ -31,13 +38,13 @@ const MyPosts = (props) => {
         <Row>
           <Col sm={3}></Col>
           <Col sm={6}>
-            <Col >
+            <Col>
               <Form.Control
                 as="textarea"
                 ref={newheadline}
                 size="lg"
                 rows={1}
-                type="text" 
+                type="text"
                 className={mp.headline}
                 placeholder="Заголовок..."
               ></Form.Control>
@@ -59,7 +66,9 @@ const MyPosts = (props) => {
                   variant="outline-warning"
                   className="mt-3"
                   onClick={addPost}
-                >Опубликовать</Button>
+                >
+                  Опубликовать
+                </Button>
               </Col>
               <Col>
                 <Form.Group controlId="formFileSm" className={mp.filesInput}>
@@ -68,11 +77,11 @@ const MyPosts = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col></Col>
+          <Col>
+            <Color />
+          </Col>
         </Row>
-        <Row>
-        {postElement}
-        </Row>
+        <Row>{postElement}</Row>
       </Container>
     </div>
   );

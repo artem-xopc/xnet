@@ -2,6 +2,7 @@
 import { addPostCreator, updatePostCreator } from "../../../redux/blog_reducer";
 import MyPosts from "../Molecules/MyPosts";
 import { connect } from "react-redux";
+import Posts from "../Molecules/MyPostsC";
 
 
 let mapStateToProps = ({blog}) => {
