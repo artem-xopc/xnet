@@ -5,7 +5,7 @@ import { AuthContext } from "./Components/Context/AuthContext";
 import { useEffect, useState } from "react";
 
 function App(props) {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,11 +18,7 @@ function App(props) {
   return (
     <div className="App">
       <AuthContext.Provider
-        value={{
-          isAuth,
-          setIsAuth,
-          isLoading,
-        }}
+        value={{ isAuth, setIsAuth, isLoading, }}
       >
         <NavBar />
       </AuthContext.Provider>

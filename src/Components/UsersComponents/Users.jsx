@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import UsersService from "../API/UsersService";
 import { useFetching } from "../hooks/useFetching";
@@ -8,20 +8,25 @@ import Select from "../UI/Select/Select";
 import us from "./Users.module.css";
 import UsersList from "./UsersList";
 
-const UsersItem = ({users, currentPage, follow, unfollow, setUsers, setPage, totalCount, totalPages}) => {
-  debugger;
+const Users = ({users, currentPage, follow, unfollow, setUsers, setPage, totalCount, totalPages}) => {
 
   // const [users, setUsers] = useState([]) 
+  const [ispage, setIsPage] = useState(1);
+  const [limit, setLimit] = useState(10);
   const infFeed = useRef()
+  
 
   const [fetchUsers, isUsersLoading, userError] = useFetching (
     async (limit, page) => {
       const response = await UsersService.getAllUsers(limit, page);
-      setUsers([...users, ...response.data])
+      setUsers(response.data)
       const totalCount = response.headers["x-total-count"]
       totalPages(totalCount, limit)
     }
   )
+  useEffect(() => {
+    fetchUsers(limit, ispage);
+  }, [limit, ispage])
 
   let changePage = (user) => {
     setPage(user)
@@ -70,7 +75,7 @@ const UsersItem = ({users, currentPage, follow, unfollow, setUsers, setPage, tot
   );
 }
 
-export default UsersItem;
+export default Users;
 
 
   // let getUsers = () => {

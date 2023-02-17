@@ -1,27 +1,20 @@
-import {
-  Button,
-  Container,
-  // Form,
-  // FormControl,
-  Nav,
-  Navbar,
-  NavbarBrand,
-} from "react-bootstrap";
+import { Button, Container, Nav, Navbar, NavbarBrand } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../icons/logo.png";
-import Main from "./Main";
-import News from "./News";
-import Articles from "./Articles";
-import About from "./About";
-import Blog from "./Blog";
-import Users from "./Users";
-import Login from "./Login";
-import SignUp from "./SignUp";
 import AppRouter from "../routes/AppRouter";
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 const NavBar = (props) => {
+  const { isAuth, setIsAuth } = useContext(AuthContext);
+
+  const logout = (event) => {
+    setIsAuth(false);
+    localStorage.removeItem("auth");
+  };
+
   return (
     <div>
       <Navbar
@@ -47,44 +40,28 @@ const NavBar = (props) => {
           <NavbarToggle aria-controls="responsive-navbar-nav" />
           <NavbarCollapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">
-                Главная
-              </Nav.Link>
-              <Nav.Link as={Link} to="/news">
-                Новости
-              </Nav.Link>
-              <Nav.Link as={Link} to="/articles">
-                Статьи
-              </Nav.Link>
-              <Nav.Link as={Link} to="/about">
-                Обо мне
-              </Nav.Link>
-              <Nav.Link as={Link} to="/blog">
-                Блог
-              </Nav.Link>
+              <Nav.Link as={Link} to="/">Главная</Nav.Link>
+              <Nav.Link as={Link} to="/news">Новости</Nav.Link>
+              <Nav.Link as={Link} to="/articles">Статьи</Nav.Link>
+              <Nav.Link as={Link} to="/about">Обо мне</Nav.Link>
+              <Nav.Link as={Link} to="/blog">Блог</Nav.Link>
             </Nav>
-            {/* <Form className="d-flex">
-              <FormControl
-                style={{backgroundColor: "#000", border: "none", color: "rgb(171 178 191)"}}
-                type="text"
-                placeholder="Поиск"
-                className="me-sm-2"
-              />
-            </Form> */}
-            <Nav.Link as={Link} to="/login">
-              <Button variant="outline-info" style={{ marginRight: "3px" }}>
-                Login
-              </Button>
-            </Nav.Link>
-            <Nav.Link as={Link} to="/login">
+
+            {isAuth ? (
+              <Button variant="outline-warning" onClick={logout}>LogOut</Button>
+            ) : (
+              <Nav.Link as={Link} to="/login">
+                <Button variant="outline-info">Login</Button>
+              </Nav.Link>
+            )}
+
+            {/* <Nav.Link as={Link} to="/login">
               <Button variant="outline-warning">Sign Up</Button>
-            </Nav.Link>
+            </Nav.Link> */}
           </NavbarCollapse>
         </Container>
       </Navbar>
-      <div>
-        <AppRouter/>
-      </div>
+      <AppRouter />
     </div>
   );
 };

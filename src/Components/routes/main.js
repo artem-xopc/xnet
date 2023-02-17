@@ -8,7 +8,7 @@ import SignUp from "../Pages/SignUp"
 import Users from "../Pages/Users";
 
 export const publicRoutes = [
-    {path: "/main", element: Main},
+    {path: "/", element: Main},
     {path: "/news", element: News},
     {path: "/articles", element: Articles},
     {path: "/about", element: About},
@@ -18,6 +18,13 @@ export const publicRoutes = [
 ];
 
 export const privateRoutes = [
+    {path: "/main", element: Main},
+    {path: "/news", element: News},
+    {path: "/articles", element: Articles},
+    {path: "/about", element: About},
     {path: "/blog", element: Blog},
+    {path: "/login", element: Login},
+    {path: "/users", element: Users},
+    // {path: "/signup", element: SignUp},
     // {path: "/cabinet/:id", element: Cabinet},
 ];

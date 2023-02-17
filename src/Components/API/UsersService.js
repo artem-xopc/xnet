@@ -8,9 +8,6 @@ export default class UsersService {
                 _page: page,
             }
         })
-        .then((response) => {
-          this.props.setUsers(response.data);
-        });
         return response;
     }
 }
