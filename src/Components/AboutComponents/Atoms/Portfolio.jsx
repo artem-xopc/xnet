@@ -1,7 +1,5 @@
 import { Button, Col, Container, Form, Nav, Row } from "react-bootstrap";
-import { Route } from "react-router";
 import { Link } from "react-router-dom";
-import Users from "../../../Pages/Users/Users";
 import Artistic from "./Artistic";
 import a from "./Atoms.module.css";
 

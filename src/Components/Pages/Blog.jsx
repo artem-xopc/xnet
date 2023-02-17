@@ -1,4 +1,4 @@
-import BlogContainer from "../../Components/BlogComponents/Organism/BlogContainer";
+import BlogContainer from "../BlogComponents/Organism/BlogContainer";
 
 const Blog = (props) => {
   return (

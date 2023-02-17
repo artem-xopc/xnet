@@ -1,4 +1,4 @@
-import NewsContainer from "../../Components/NewsComponents/organism/NewsContainer";
+import NewsContainer from "../NewsComponents/organism/NewsContainer";
 import "./main.css";
 
 const News = () => {

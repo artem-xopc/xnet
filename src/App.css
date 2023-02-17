@@ -1,6 +1,8 @@
 .App {
-  /* text-align: center; */
-  background-color: rgb(32, 36, 43);
+  min-height: 100vh;
+  background-color: rgb(17, 18, 18);
+  border: none;
+  color: rgb(171 178 191);
   font-family: 'Courier New', Courier, monospace;
 }
 

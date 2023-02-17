@@ -1,5 +1,5 @@
 import { Container, Row } from "react-bootstrap";
-import UsersContainer from "../../Components/UsersComponents/UsersContainer";
+import UsersContainer from "../UsersComponents/UsersContainer";
 
 const Users = () => {
   return (

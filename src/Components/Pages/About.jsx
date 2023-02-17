@@ -5,9 +5,9 @@ import {
   Row,
   Tab,
 } from "react-bootstrap";
-import Work from "../../Components/AboutComponents/Atoms/Portfolio";
-import AboutContainer from "../../Components/AboutComponents/organism/AboutContainer";
-import "../main.css" 
+import Work from "../AboutComponents/Atoms/Portfolio";
+import AboutContainer from "../AboutComponents/organism/AboutContainer";
+import "./main.css" 
 
 const About = (props) => {
   return (

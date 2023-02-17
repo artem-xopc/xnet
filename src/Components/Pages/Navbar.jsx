@@ -10,14 +10,16 @@ import {
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import { Routes, Route, Link } from "react-router-dom";
-import logo from "../icons/logo.png";
-import Main from "../Pages/MainPage/Main.jsx";
-import News from "../Pages/NewsPage/News.jsx";
-import Articles from "../Pages/ArticlesPage/Articles.jsx";
-import About from "../Pages/AboutPage/About.jsx";
-import Blog from "../Pages/BlogPage/Blog";
-import Users from "../Pages/Users/Users";
-import Login from "../Pages/Login/Login";
+import logo from "../../icons/logo.png";
+import Main from "./Main";
+import News from "./News";
+import Articles from "./Articles";
+import About from "./About";
+import Blog from "./Blog";
+import Users from "./Users";
+import Login from "./Login";
+import SignUp from "./SignUp";
+import AppRouter from "../routes/AppRouter";
 
 const NavBar = (props) => {
   return (
@@ -81,15 +83,7 @@ const NavBar = (props) => {
         </Container>
       </Navbar>
       <div>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
+        <AppRouter/>
       </div>
     </div>
   );

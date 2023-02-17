@@ -1,11 +1,31 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from './Components/Navbar';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavBar from "./Components/Pages/Navbar";
+import { AuthContext } from "./Components/Context/AuthContext";
+import { useEffect, useState } from "react";
 
 function App(props) {
+  const [isAuth, setIsAuth] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if(localStorage.getItem("auth")) {
+      setIsAuth(true)
+    }
+    setIsLoading(false);
+  }, [])
+
   return (
-    <div className="App" style={{backgroundColor: "rgb(17, 18, 18)", border: "none", color: "rgb(171 178 191)"}}>
-      <NavBar />
+    <div className="App">
+      <AuthContext.Provider
+        value={{
+          isAuth,
+          setIsAuth,
+          isLoading,
+        }}
+      >
+        <NavBar />
+      </AuthContext.Provider>
     </div>
   );
 }
