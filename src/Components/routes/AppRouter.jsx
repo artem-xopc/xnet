@@ -5,7 +5,6 @@ import Loader from "../UI/Loader/Loader";
 import { privateRoutes, publicRoutes } from "./main";
 
 function AppRouter() {
-  debugger;
 //   const {isAuth, isLoading} = useContext(AuthContext);
   const [isAuth, setIsAuth] = useState(false);
 

@@ -7,30 +7,34 @@ import Pagination from "../UI/Pagination/Pagination";
 import Select from "../UI/Select/Select";
 import us from "./Users.module.css";
 import UsersList from "./UsersList";
+import Loader from "../UI/Loader/Loader"
+import { getPagesCount } from "../utils/pages";
 
-const Users = ({users, currentPage, follow, unfollow, setUsers, setPage, totalCount, totalPages}) => {
+const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, totalCount, /* totalPages */}) => {
 
   // const [users, setUsers] = useState([]) 
-  const [ispage, setIsPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(10)
+  const [totalPages, setTotalPages] = useState(10)
   const infFeed = useRef()
   
 
   const [fetchUsers, isUsersLoading, userError] = useFetching (
     async (limit, page) => {
       const response = await UsersService.getAllUsers(limit, page);
-      setUsers(response.data)
-      const totalCount = response.headers["x-total-count"]
-      totalPages(totalCount, limit)
+      setUsers([...users, ...response.data])
+      const resultCount = response.headers["x-total-count"]
+      totalPages(getPagesCount(resultCount, limit))
     }
-  )
+  );
+
   useEffect(() => {
-    fetchUsers(limit, ispage);
-  }, [limit, ispage])
+    fetchUsers(limit, page);
+  }, [limit, page]);
 
   let changePage = (user) => {
     setPage(user)
-}
+  };
 
   return (
     <Container>
@@ -63,6 +67,7 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPage, totalCo
           unfollow={unfollow} 
           />
           <div ref={infFeed} />
+          {isUsersLoading && <div><Loader /></div>}
         </Col>
         <Col></Col>
         <Pagination 

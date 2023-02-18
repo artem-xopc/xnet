@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         setUsers: (users) => {
             dispatch(setUsersAC(users))
         },
-        setPage: (currentPage) => {
+        setPageAC: (currentPage) => {
             dispatch(setPageAC(currentPage))
         }
     }

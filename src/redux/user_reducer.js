@@ -32,7 +32,7 @@ let initialState = {
     },
   ],
   totalCount: 1,
-  totalPages: 3,
+  totalPages: 1,
   currentPage: 1,
 };
 
