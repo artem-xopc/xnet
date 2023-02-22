@@ -24,7 +24,7 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, total
       const response = await UsersService.getAllUsers(limit, page);
       setUsers([...users, ...response.data])
       const resultCount = response.headers["x-total-count"]
-      totalPages(getPagesCount(resultCount, limit))
+      setTotalPages(getPagesCount(resultCount, limit))
     }
   );
 
@@ -71,7 +71,7 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, total
         </Col>
         <Col></Col>
         <Pagination 
-        currentPage={currentPage}
+        currentPage={page}
         changePage={changePage}
         totalPages={totalPages}
         />

@@ -1,5 +1,5 @@
-import aboutReducer from "./about_reducer";
-import newsReducer from "./news_reducer";
+import aboutReducer from "../about_reducer";
+import newsReducer from "../news_reducer";
 
 let store = {
   // _state: {
