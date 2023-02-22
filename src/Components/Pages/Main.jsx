@@ -1,6 +1,6 @@
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import CarouselImg from "../Carousel";
+import CarouselImg from "../UI/Carousel";
 import Likes from "../UI/Likes/Likes";
 import { ProfileCard, TelegramCard } from "../NewsComponents/ProfileCard";
 

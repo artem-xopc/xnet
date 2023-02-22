@@ -1,30 +1,39 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import UsersService from "../API/UsersService";
+import { Col, Container, Row } from "react-bootstrap";
 import { useFetching } from "../hooks/useFetching";
-import Pagination from "../UI/Pagination/Pagination";
-import Select from "../UI/Select/Select";
-import us from "./Users.module.css";
-import UsersList from "./UsersList";
-import Loader from "../UI/Loader/Loader"
 import { getPagesCount } from "../utils/pages";
+import UsersService from "../API/UsersService";
+import UsersList from "./UsersList";
+import Search from "../UI/Search/Search";
+import Select from "../UI/Select/Select";
+import Loader from "../UI/Loader/Loader";
+import Pagination from "../UI/Pagination/Pagination";
+import us from "./Users.module.css";
 
-const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, totalCount, /* totalPages */}) => {
+const Users = ({
+  users,
+  currentPage,
+  follow,
+  unfollow,
+  setUsers,
+  setPageAC,
+  totalCount /* totalPages */,
+}) => {
+  // const [users, setUsers] = useState([])
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const [totalPages, setTotalPages] = useState(10);
+  const infFeed = useRef();
 
-  // const [users, setUsers] = useState([]) 
-  const [page, setPage] = useState(1)
-  const [limit, setLimit] = useState(10)
-  const [totalPages, setTotalPages] = useState(10)
-  const infFeed = useRef()
-  
-
-  const [fetchUsers, isUsersLoading, userError] = useFetching (
+  const [fetchUsers, isUsersLoading, userError] = useFetching(
     async (limit, page) => {
-      const response = await UsersService.getAllUsers(limit, page);
-      setUsers([...users, ...response.data])
-      const resultCount = response.headers["x-total-count"]
-      setTotalPages(getPagesCount(resultCount, limit))
+      const response = await UsersService.getAllUsers(limit, page).then(
+        (response) => {
+          setUsers([...users, ...response.data]);
+        }
+      );
+      const resultCount = response.headers["x-total-count"];
+      setTotalPages(getPagesCount(resultCount, limit));
     }
   );
 
@@ -33,62 +42,39 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, total
   }, [limit, page]);
 
   let changePage = (user) => {
-    setPage(user)
+    setPage(user);
   };
 
   return (
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          <Row sm={3}>
-            <InputGroup size="sm" className="mt-3" bg="000">
-              <InputGroup.Text id="inputGroup-sizing-sm">
-                Поиск
-              </InputGroup.Text>
-              <Form.Control
-                aria-label="Small"
-                aria-describedby="inputGroup-sizing-sm"
-              />
-            </InputGroup>
-          </Row>
-          {/* <Row>
-            <Select
-              options={[
-                { value: "name", name: "По имени" },
-                { value: "username", name: "По user_name" },
-              ]}
-            />
-          </Row> */}
+          <UsersList users={users} follow={follow} unfollow={unfollow} />
+
+          <div ref={infFeed} />
+
+          {isUsersLoading && (
+            <div>
+              <Loader />
+            </div>
+          )}
         </Col>
         <Col>
-          <UsersList 
-          users={users}
-          follow={follow} 
-          unfollow={unfollow} 
-          />
-          <div ref={infFeed} />
-          {isUsersLoading && <div><Loader /></div>}
+          <Row>
+            <Search />
+          </Row>
+          <Row>
+            <Select />
+          </Row>
         </Col>
-        <Col></Col>
-        <Pagination 
-        currentPage={page}
-        changePage={changePage}
-        totalPages={totalPages}
+        <Pagination
+          currentPage={page}
+          changePage={changePage}
+          totalPages={totalPages}
         />
       </Row>
     </Container>
   );
-}
+};
 
 export default Users;
-
-
-  // let getUsers = () => {
-  //   if (props.users.length === 0) {
-  //     axios
-  //       .get("https://jsonplaceholder.typicode.com/users")
-  //       .then((response) => {
-  //         props.setUsers(response.data);
-  //       });
-  //   }
-  // };

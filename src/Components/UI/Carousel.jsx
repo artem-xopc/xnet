@@ -1,7 +1,7 @@
 import { Carousel } from "react-bootstrap";
-import binarymap from '../icons/binarymap.jpg';
-import lp from '../icons/LP.jpg';
-import binaryNum from '../icons/010101.jpg';
+import binarymap from '../../icons/binarymap.jpg';
+import lp from '../../icons/LP.jpg';
+import binaryNum from '../../icons/010101.jpg';
 
 const CarouselImg = () => {
     return (

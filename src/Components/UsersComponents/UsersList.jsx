@@ -1,16 +1,22 @@
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import userAva from "../../icons/users_ava3.png";
 import us from "./Users.module.css";
 
 const UsersList = ({users, follow, unfollow}) => {
     return (
-        <div>
+        <Container fluid>
           {users.map((u) => (
             <Row className={us.item}>
-              <Col>
+              <Col xs={4}>
                 <Row>
-                  <img src={userAva} className={us.ava} />
+                  <Col><img src={userAva} className={us.ava} /></Col>
                 </Row>
+              </Col>
+              <Col>
+                  <Row>Основная информация:</Row>
+                  <Row>Псевдоним: {u.username},</Row>
+                  <Row>Имя: {u.name},</Row>
+                  <Row>Сайт: {u.website},</Row>
                 <Row>
                   {u.followed ? (
                     <Button
@@ -29,19 +35,9 @@ const UsersList = ({users, follow, unfollow}) => {
                   )}
                 </Row>
               </Col>
-              <Col>
-                Основная инфа
-                <Col>
-                  <Row>{u.name}</Row>
-                  <Row>{u.username}</Row>
-                </Col>
-                <Col>
-                  <Row>{u.website}</Row>
-                </Col>
-              </Col>
             </Row>
           ))}
-        </div>
+        </Container>
     )
 }
 
