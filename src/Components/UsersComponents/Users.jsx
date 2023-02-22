@@ -64,7 +64,11 @@ const Users = ({
             <Search />
           </Row>
           <Row>
-            <Select />
+            <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" options={[
+              {value: 5, name: "05 пользователей"},
+              {value: 10, name: "10 пользователей"},
+              {value: 15, name: "15 пользователей"},
+            ]} />
           </Row>
         </Col>
         <Pagination
