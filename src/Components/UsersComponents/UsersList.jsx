@@ -1,44 +1,22 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
-import userAva from "../../icons/users_ava3.png";
-import us from "./Users.module.css";
+import UserItem from "./UserItem";
 
-const UsersList = ({users, follow, unfollow}) => {
+const UsersList = ({ users, follow, unfollow }) => {
+  if (!users.length) {
     return (
-        <Container fluid>
-          {users.map((u) => (
-            <Row className={us.item}>
-              <Col xs={4}>
-                <Row>
-                  <Col><img src={userAva} className={us.ava} /></Col>
-                </Row>
-              </Col>
-              <Col>
-                  <Row>Основная информация:</Row>
-                  <Row>Псевдоним: {u.username},</Row>
-                  <Row>Имя: {u.name},</Row>
-                  <Row>Сайт: {u.website},</Row>
-                <Row>
-                  {u.followed ? (
-                    <Button
-                      variant="outline-secondary"
-                      onClick={() => unfollow(u.id)}
-                    >
-                      Вы подписаны
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="outline-info"
-                      onClick={() => follow(u.id)}
-                    >
-                      Подписаться
-                    </Button>
-                  )}
-                </Row>
-              </Col>
-            </Row>
-          ))}
-        </Container>
-    )
-}
+      <div style={{ textAlign: "center" }}>
+        <h1>Пользователи не были обнаружены -_-</h1>
+      </div>
+    );
+  }
+
+  return (
+    <Container fluid>
+      {users.map((user) => (
+        <UserItem user={user} follow={follow} unfollow={unfollow} />
+      ))}
+    </Container>
+  );
+};
 
 export default UsersList;

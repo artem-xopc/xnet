@@ -9,33 +9,29 @@ import Select from "../UI/Select/Select";
 import Loader from "../UI/Loader/Loader";
 import Pagination from "../UI/Pagination/Pagination";
 import us from "./Users.module.css";
+import { useOberver } from "../hooks/useObserver";
+import UserFilter from "./UsersFilter";
+import { useUsers } from "../hooks/useUsers";
 
-const Users = ({
-  users,
-  currentPage,
-  follow,
-  unfollow,
-  setUsers,
-  setPageAC,
-  totalCount /* totalPages */,
-}) => {
-  // const [users, setUsers] = useState([])
+const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, totalCount /* totalPages */,}) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(10);
+  const [filter, setFilter] = useState({sort: "", query: ""})
   const infFeed = useRef();
+
+  const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
 
   const [fetchUsers, isUsersLoading, userError] = useFetching(
     async (limit, page) => {
-      const response = await UsersService.getAllUsers(limit, page).then(
-        (response) => {
-          setUsers([...users, ...response.data]);
-        }
-      );
+      const response = await UsersService.getAllUsers(limit, page);
+      setUsers([...users, ...response.data])
       const resultCount = response.headers["x-total-count"];
       setTotalPages(getPagesCount(resultCount, limit));
     }
   );
+
+  useOberver(infFeed, page < totalPages, isUsersLoading, () => setPage(page + 1))
 
   useEffect(() => {
     fetchUsers(limit, page);
@@ -49,19 +45,21 @@ const Users = ({
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          <UsersList users={users} follow={follow} unfollow={unfollow} />
+          <UsersList users={sortedAndSelectedUser} follow={follow} unfollow={unfollow} />
+          {userError && <h1>Произошла ошибка {userError}</h1>}
 
           <div ref={infFeed} />
 
           {isUsersLoading && (
-            <div>
+            <div style={{alignItems: "center"}}>
               <Loader />
             </div>
           )}
+
         </Col>
         <Col>
-          <Row>
-            <Search />
+          <Row className="mb-3">
+            <UserFilter filter={filter} setFilter={setFilter} />
           </Row>
           <Row>
             <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" options={[
