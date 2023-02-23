@@ -4,7 +4,6 @@ import { useFetching } from "../hooks/useFetching";
 import { getPagesCount } from "../utils/pages";
 import UsersService from "../API/UsersService";
 import UsersList from "./UsersList";
-import Search from "../UI/Search/Search";
 import Select from "../UI/Select/Select";
 import Loader from "../UI/Loader/Loader";
 import Pagination from "../UI/Pagination/Pagination";
@@ -13,7 +12,7 @@ import { useOberver } from "../hooks/useObserver";
 import UserFilter from "./UsersFilter";
 import { useUsers } from "../hooks/useUsers";
 
-const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, totalCount /* totalPages */,}) => {
+const Users = ({users, follow, unfollow, setUsers}) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(10);
@@ -26,8 +25,8 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, total
     async (limit, page) => {
       const response = await UsersService.getAllUsers(limit, page);
       setUsers([...users, ...response.data])
-      const resultCount = response.headers["x-total-count"];
-      setTotalPages(getPagesCount(resultCount, limit));
+      const totalCount = response.headers["x-total-count"];
+      setTotalPages(getPagesCount(totalCount, limit));
     }
   );
 
@@ -62,10 +61,12 @@ const Users = ({users, currentPage, follow, unfollow, setUsers, setPageAC, total
             <UserFilter filter={filter} setFilter={setFilter} />
           </Row>
           <Row>
-            <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" options={[
+            <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" 
+            options={[
               {value: 5, name: "05 пользователей"},
               {value: 10, name: "10 пользователей"},
               {value: 15, name: "15 пользователей"},
+              {value: -1, name: "Показать всех пользователей"},
             ]} />
           </Row>
         </Col>

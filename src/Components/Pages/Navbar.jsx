@@ -44,7 +44,7 @@ const NavBar = (props) => {
               <Nav.Link as={Link} to="/news">Новости</Nav.Link>
               <Nav.Link as={Link} to="/articles">Статьи</Nav.Link>
               <Nav.Link as={Link} to="/about">Обо мне</Nav.Link>
-              <Nav.Link as={Link} to="/blog">Блог</Nav.Link>
+              <Nav.Link as={Link} to="/shop">Магазин</Nav.Link>
             </Nav>
 
             {isAuth ? (

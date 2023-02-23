@@ -3,10 +3,9 @@ import { Form, Row } from "react-bootstrap";
 const Select = ({ options, defaultValue, value, onChange }) => {
   return (
     <Row>
-      <Form.Select aria-label="Выбор количества пользователей"
+      <Form.Select
       value={value}
-      onChange={e => onChange(e.target.value)}
-      >
+      onChange={e => onChange(e.target.value)}>
         <option disabled value="">{defaultValue}</option>
 
         {options.map(option => 
