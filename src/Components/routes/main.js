@@ -26,7 +26,6 @@ export const privateRoutes = [
     {path: "/about", element: About},
     {path: "/blog", element: Blog},
     {path: "/login", element: Login},
-    {path: "/users", element: Users},
-    // {path: "/signup", element: SignUp},
+    {path: "/users", element: Users}
     // {path: "/cabinet/:id", element: Cabinet},
 ];

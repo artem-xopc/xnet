@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/AuthContext";
 function SignUp() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
 
-  const Signup = (event) => {
+  const signup = (event) => {
     event.preventdefault();
     setIsAuth(true);
     localStorage.setItem("auth", "true");
@@ -47,7 +47,7 @@ function SignUp() {
               <Form.Check type="checkbox" label="Запомнить меня" />
             </Form.Group>
 
-            <Button variant="outline-info" onClick={Signup}>
+            <Button variant="outline-info" onClick={signup}>
               SignUp
             </Button>
           </form>

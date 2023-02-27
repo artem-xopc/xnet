@@ -8,7 +8,7 @@ function UserFilter({ filter, setFilter }) {
       <Row>
         <Select
           value={filter.sort}
-          onChange={(selectPost) => setFilter({ ...filter, sort: selectPost })}
+          onChange={(selectUser) => setFilter({ ...filter, sort: selectUser })}
           defaultValue="Сортировка пользователей"
           options={[
             { value: "name", name: "Имя пользователя" },
@@ -18,7 +18,7 @@ function UserFilter({ filter, setFilter }) {
       </Row>
       <Row>
         <Search
-          value={filter.sort}
+          value={filter.query}
           onChange={(e) => setFilter({ ...filter, query: e.target.value })}
         />
       </Row>

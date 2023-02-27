@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useFetching } from "../hooks/useFetching";
 import { getPagesCount } from "../utils/pages";
@@ -11,15 +11,27 @@ import us from "./Users.module.css";
 import { useOberver } from "../hooks/useObserver";
 import UserFilter from "./UsersFilter";
 import { useUsers } from "../hooks/useUsers";
+import Search from "../UI/Search/Search";
 
 const Users = ({users, follow, unfollow, setUsers}) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(10);
-  const [filter, setFilter] = useState({sort: "", query: ""})
+  const [filter, setFilter] = useState({sort: "", query: ""});
+
   const infFeed = useRef();
 
-  const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
+  // const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
+  const sortedUsers = useMemo(() => {
+    if(filter.sort) {
+      return [...users].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
+    }
+    return users;
+  }, [filter.sort, users]);
+
+  const sortedAndSelectedUser = useMemo(() => {
+    return sortedUsers.filter(user => user.username.toLowerCase().includes(filter.query.toLowerCase()))
+  }, [filter.query, sortedUsers]);
 
   const [fetchUsers, isUsersLoading, userError] = useFetching(
     async (limit, page) => {
@@ -34,7 +46,11 @@ const Users = ({users, follow, unfollow, setUsers}) => {
 
   useEffect(() => {
     fetchUsers(limit, page);
-  }, [limit, page]);
+  }, [page, limit]);
+
+  let removeUser = (user) => {
+    setUsers(users.filter(u => u.id !== user.id))
+  }; 
 
   let changePage = (user) => {
     setPage(user);
@@ -44,13 +60,18 @@ const Users = ({users, follow, unfollow, setUsers}) => {
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          <UsersList users={sortedAndSelectedUser} follow={follow} unfollow={unfollow} />
           {userError && <h1>Произошла ошибка {userError}</h1>}
 
+          <UsersList 
+          users={sortedAndSelectedUser} 
+          follow={follow} 
+          unfollow={unfollow} 
+          remove={removeUser} />
+          
           <div ref={infFeed} />
 
           {isUsersLoading && (
-            <div style={{alignItems: "center"}}>
+            <div>
               <Loader />
             </div>
           )}

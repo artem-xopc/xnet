@@ -1,7 +1,7 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import UserItem from "./UserItem";
 
-const UsersList = ({ users, follow, unfollow }) => {
+const UsersList = ({ users, follow, unfollow, remove }) => {
   if (!users.length) {
     return (
       <div style={{ textAlign: "center" }}>
@@ -12,8 +12,15 @@ const UsersList = ({ users, follow, unfollow }) => {
 
   return (
     <Container fluid>
-      {users.map((user) => (
-        <UserItem user={user} follow={follow} unfollow={unfollow} />
+      {users.map((user, index) => (
+        <UserItem 
+        key={user.id} 
+        user={user} 
+        follow={follow} 
+        unfollow={unfollow}
+        number={index + 1}
+        remove={remove} 
+        />
       ))}
     </Container>
   );
