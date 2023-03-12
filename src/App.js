@@ -1,7 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from "./Components/Pages/Navbar";
-import { AuthContext } from "./Components/Context/AuthContext";
+import NavBar from "./Pages/Navbar";
+import { AuthContext } from "./Context/AuthContext";
 import { useEffect, useState } from "react";
 
 function App(props) {

@@ -1,6 +1,6 @@
 import { Button, Col, Row } from "react-bootstrap";
 import us from "./Users.module.css";
-import userAva from "../../icons/users_ava3.png";
+import userAva from "../../styles/images/avatars/users_ava3.png";
 import { useNavigate } from "react-router";
 
 function UserItem({ user, remove, follow, unfollow }) {

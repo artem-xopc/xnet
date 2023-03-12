@@ -1,5 +1,5 @@
 import { Button, Col, Row } from "react-bootstrap";
-import { getPagesArray } from "../../utils/pages";
+import { getPagesArray } from "../../../utils/pages";
 
 const Pagination = (totalPages, changePage, currentPage) => {
   let pagesArray = getPagesArray(totalPages);

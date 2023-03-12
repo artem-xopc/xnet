@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useFetching } from "../hooks/useFetching";
-import { getPagesCount } from "../utils/pages";
-import UsersService from "../API/UsersService";
+import { useFetching } from "../../hooks/useFetching";
+import { getPagesCount } from "../../utils/pages";
+import UsersService from "../../API/UsersService";
 import UsersList from "./UsersList";
 import Select from "../UI/Select/Select";
 import Loader from "../UI/Loader/Loader";
 import Pagination from "../UI/Pagination/Pagination";
 import us from "./Users.module.css";
-import { useOberver } from "../hooks/useObserver";
+import { useOberver } from "../../hooks/useObserver";
 import UserFilter from "./UsersFilter";
-import { useUsers } from "../hooks/useUsers";
+import { useUsers } from "../../hooks/useUsers";
 import Search from "../UI/Search/Search";
 
 const Users = ({users, follow, unfollow, setUsers}) => {
@@ -21,17 +21,18 @@ const Users = ({users, follow, unfollow, setUsers}) => {
 
   const infFeed = useRef();
 
-  // const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
-  const sortedUsers = useMemo(() => {
-    if(filter.sort) {
-      return [...users].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
-    }
-    return users;
-  }, [filter.sort, users]);
+  const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
+  
+  // const sortedUsers = useMemo(() => {
+  //   if(filter.sort) {
+  //     return [...users].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
+  //   }
+  //   return users;
+  // }, [filter.sort, users]);
 
-  const sortedAndSelectedUser = useMemo(() => {
-    return sortedUsers.filter(user => user.username.toLowerCase().includes(filter.query.toLowerCase()))
-  }, [filter.query, sortedUsers]);
+  // const sortedAndSelectedUser = useMemo(() => {
+  //   return sortedUsers.filter(user => user.username.toLowerCase().includes(filter.query.toLowerCase()))
+  // }, [filter.query, sortedUsers]);
 
   const [fetchUsers, isUsersLoading, userError] = useFetching(
     async (limit, page) => {
@@ -68,7 +69,11 @@ const Users = ({users, follow, unfollow, setUsers}) => {
           unfollow={unfollow} 
           remove={removeUser} />
           
-          <div ref={infFeed} />
+          <Row>
+            <Col></Col>
+            <Col><div ref={infFeed} style={{backgroundColor: "#fff"}} /></Col>
+            <Col></Col>
+          </Row>
 
           {isUsersLoading && (
             <div>

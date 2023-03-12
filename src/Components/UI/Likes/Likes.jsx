@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import dislike from "../../../icons/dislike.png";
-import like from "../../../icons/like.png";
+import dislike from "../../../styles/images/icons/dislike.png";
+import like from "../../../styles/images/icons/like.png";
 
 const Likes = () => {
   const [likes, setLikes] = useState(0)
