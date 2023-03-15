@@ -1,7 +1,7 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET-USERS";
-const SET_PAGE = "SET-PAGE";
+const SET_PAGE = "SET-PAGE"; 
 
 let initialState = {
   users: [

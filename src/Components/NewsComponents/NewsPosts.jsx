@@ -1,6 +1,7 @@
 import { Col, Container, Row, Tab, Tabs } from "react-bootstrap"
 import Post from "./Post";
-import { ProfileCard, TelegramCard } from "../UI/Cards"
+import { ProfileCard } from "../UI/Cards/ProfileCard"
+import { TelegramCard } from "../UI/Cards/TelegramCard"
 
 const NewsPosts = ({news}) => {
     let ITElement = news.news.newsIT.map((i) => (

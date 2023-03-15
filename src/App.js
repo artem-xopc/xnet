@@ -9,17 +9,15 @@ function App(props) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if(localStorage.getItem("auth")) {
-      setIsAuth(true)
+    if (localStorage.getItem("auth")) {
+      setIsAuth(true);
     }
     setIsLoading(false);
-  }, [])
+  }, []);
 
   return (
     <div className="App">
-      <AuthContext.Provider
-        value={{ isAuth, setIsAuth, isLoading, }}
-      >
+      <AuthContext.Provider value={{ isAuth, setIsAuth, isLoading }}>
         <NavBar />
       </AuthContext.Provider>
     </div>

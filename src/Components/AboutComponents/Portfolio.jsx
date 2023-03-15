@@ -7,13 +7,16 @@ const Work = () => {
   return (
     <Container>
       <Row className={a.portfolioWrapper}>
-        <Col>Примеры моих работ (Художественные примеры).</Col>
+        <Col><h4>Примеры моих работ (Художественные примеры)</h4></Col>
       </Row>
-      <Row>
+      <Row className="mb-3">
         <Artistic />
       </Row>
       <Row>
-        <Col>Работа с API</Col>
+        
+      </Row>
+      <Row>
+        <Col><h4>Работа с API</h4></Col>
       </Row>
       <Row>
         <Col>
