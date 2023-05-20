@@ -1,13 +1,8 @@
-import {
-  Button,
-  Col,
-  Container,
-  Row
-} from "react-bootstrap";
-import s from "../../styles/styles.css";
+import { Container, Row, Col } from "react-bootstrap";
 import { PortfolioCard_1 } from "../UI/Cards/Portfolio1";
 import { PortfolioCard_2 } from "../UI/Cards/Portfolio2";
 import { PortfolioCard_3 } from "../UI/Cards/Portfolio3";
+// import s from "../../styles/styles.css";
 
 const Artistic = () => {
   return (
@@ -25,37 +20,3 @@ const Artistic = () => {
 };
 
 export default Artistic;
-
-
-// {``}
-// <img
-//   src={portArt1}
-//   width="1000px"
-//   style={{}}
-//   alt="Изображение сайта, повествующего о моей книге"
-// />
-// <Row>
-// <Col></Col>
-// <Col>
-//   <Button variant="outline-info" style={{ margin: "5px" }}>
-//     <a
-//       className={s.none_dec}
-//       href="https://artem-xopc.github.io/about-my-book/"
-//       target="_blank"
-//       rel="noreferrer"
-//     >
-//       Посетить сайт
-//     </a>
-//   </Button>
-//   <Button variant="outline-info">
-//     <a
-//       className={s.none_dec}
-//       href="https://github.com/artem-xopc/about-my-book"
-//       target="_blank"
-//       rel="noreferrer"
-//     >
-//       Посмотреть код
-//     </a>
-//   </Button>
-// </Col>
-// </Row>

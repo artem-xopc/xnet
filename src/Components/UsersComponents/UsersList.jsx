@@ -5,7 +5,7 @@ const UsersList = ({ users, follow, unfollow, remove }) => {
   if (!users.length) {
     return (
       <div style={{ textAlign: "center" }}>
-        <h1>Пользователи не были обнаружены -_-</h1>
+        <h3>Пользователи не были обнаружены -_-</h3>
       </div>
     );
   }

@@ -17,10 +17,10 @@ function UserItem({ user, remove, follow, unfollow }) {
       </Col>
       <Col>
         <Row>Основная информация:</Row>
-        <Row>id: {user.id}</Row>
-        <Row>Псевдоним: {user.username},</Row>
-        {/* <Row>Имя: {user.name},</Row> */}
-        <Row>Сайт: {user.website},</Row>
+        {/* <Row>id: {user.id}</Row> */}
+        {/* <Row>Псевдоним: {user.username},</Row> */}
+        <Row>Имя: {user.name},</Row>
+        {/* <Row>Сайт: {user.website},</Row> */}
         <Row>
           <Col>
             {user.followed ? (

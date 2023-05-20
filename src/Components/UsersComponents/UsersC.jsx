@@ -1,35 +1,32 @@
 import React from "react";
 import axios from "axios";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
-import userAva from "../../icons/users_ava3.png";
-import Select from "../UI/Select/Select";
+import userAva from "../../styles/images/avatars/users_ava3.png";
 import us from "./Users.module.css";
-import UsersService from "../API/UsersService";
-import { useFetching } from "../hooks/useFetching";
+// import Select from "../UI/Select/Select";
+// import UsersService from "../../API/UsersService";
+// import { useFetching } from "../../hooks/useFetching";
 
 class Users extends React.Component {
   componentDidMount() {
-    // const [fetchUsers, isUsersLoading, userError] = useFetching (
-    //   async (limit, page) => {
-    //     const response = await UsersService.getAllUsers(limit, page);
-    //     this.props.setUsers(response.data)
-    //   }
-    // )
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.totalCount}`)
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+        this.props.setTotalCount(response.data.totalCount);
+      });
   }
 
-  setCurrentPage = (currentPage) => {
-    this.props.setPage(currentPage);
-    // axios
-    //   .get(
-    //     `https://jsonplaceholder.typicode.com/users?page${currentPage}&limit${this.props.pageSize}`
-    //   )
-    //   .then((response) => {
-    //     this.props.setUsers(response.data);
-    //   });
+  setCurrentPage = (pageNumber) => {
+    debugger
+    this.props.setPage(pageNumber);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.totalCount}`)
+      .then((response) => {
+        this.props.setUsers(response.data.items);
+      });
   }
 
   render() {
-    let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize);
+    let pagesCount = Math.ceil(this.props.totalCount / this.props.totalPages);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
       pages.push(i);
@@ -37,25 +34,6 @@ class Users extends React.Component {
 
     return (
       <Container>
-        <Row className="mt-3">
-          {pages.map((p) => (
-            <Col className="m-1">
-              {p === this.props.currentPage ? (
-                <Button variant="outline-info" className="m-1">
-                  {p}
-                </Button>
-              ) : (
-                <Button
-                  variant="outline-warning"
-                  className="m-1"
-                  onClick={(e) => {this.setCurrentPage(p)}}
-                >
-                  {p}
-                </Button>
-              )}
-            </Col>
-          ))}
-        </Row>
         <Row className={us.wrapper}>
           <Col>
             <Row sm={3}>
@@ -116,8 +94,23 @@ class Users extends React.Component {
               </Row>
             ))}
           </Col>
-          <Col></Col>
+          <Col>
+          <Col className="mt-3">
+          {pages.map((p) => {
+            return <div className="m-1">
+              {this.props.currentPage === p ? (
+                <Button variant="outline-warning" className="m-1">{p}</Button>
+              ) : (
+                <Button variant="outline-info" className="m-1" onClick={(e) => {this.setCurrentPage(p)}}>
+                  {p}
+                </Button>
+              )}
+            </div>
+  })}
+        </Col>
+        </Col>
         </Row>
+        
       </Container>
     );
   }

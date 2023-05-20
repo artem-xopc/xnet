@@ -2,6 +2,7 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET-USERS";
 const SET_PAGE = "SET-PAGE"; 
+const SET_COUNT = "SET-COUNT"; 
 
 let initialState = {
   users: [
@@ -31,7 +32,7 @@ let initialState = {
     //   password: "",
     // },
   ],
-  totalCount: 1,
+  totalCount: 100,
   totalPages: 1,
   currentPage: 1,
 };
@@ -61,7 +62,9 @@ const userReducer = (state = initialState, action) => {
     case SET_USERS:
       return { ...state, users: action.users };
     case SET_PAGE:
-      return {...state, currentPage: action.currentPage}
+      return {...state, currentPage: action.currentPage};
+      case SET_COUNT:
+        return {...state, totalCount: action.totalCount};
     default:
       return state;
   }
@@ -70,6 +73,7 @@ const userReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const setPageAC = (currentPage) => ({type: SET_PAGE, currentPage})
+export const setPageAC = (currentPage) => ({type: SET_PAGE, currentPage});
+export const setTotalCountAC = (totalCount) => ({type: SET_COUNT, totalCount});
 
 export default userReducer;
