@@ -35,7 +35,7 @@ class UsersAPIComponent extends React.Component {
     currentPage={this.props.currentPage}
     follow={this.props.follow}
     unfollow={this.props.unfollow}
-    setCurrentPage={this.props.setCurrentPage}
+    setCurrentPage={this.setCurrentPage}
     />
   }
 }
