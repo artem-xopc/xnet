@@ -4,6 +4,7 @@ import { follow, setFetchingStatus, setPage, setTotalCount, setUsers, unFollow,}
 import Users from './Users';
 import axios from 'axios';
 import Loader from '../UI/Loader/Loader';
+import UsersList from './UsersList';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -38,7 +39,7 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? (
           <Loader />
         ) : (
-          <Users
+          <UsersList
             users={this.props.users}
             totalCount={this.props.totalCount}
             totalPages={this.props.totalPages}
