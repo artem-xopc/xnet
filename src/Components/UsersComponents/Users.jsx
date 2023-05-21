@@ -1,73 +1,96 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import {Container, Col, Row} from "react-bootstrap";
-import { useFetching } from "../../hooks/useFetching";
-import { getPagesCount } from "../../utils/pages";
-import UsersService from "../../API/UsersService";
-import UsersList from "./UsersList";
-import Select from "../UI/Select/Select";
-import Loader from "../UI/Loader/Loader";
-import Pagination from "../UI/Pagination/Pagination";
-import us from "./Users.module.css";
-import { useOberver } from "../../hooks/useObserver";
-import UserFilter from "./UsersFilter";
-import { useUsers } from "../../hooks/useUsers";
-import Search from "../UI/Search/Search";
+import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+import us from './Users.module.css';
+import userAva from '../../styles/images/avatars/users_ava3.png';
 
-const UsersM = ({users, follow, unfollow, setUsers}) => {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-  const [totalPages, setTotalPages] = useState(10);
-  const [filter, setFilter] = useState({sort: "", query: ""});
-
+const Users = ({users, totalCount, totalPages, currentPage, follow, unfollow, setCurrentPage}) => {
+  //пагинация
+  let pagesCount = Math.ceil(totalCount / totalPages);
+  let pages = [];
+  for (let i = 1; i <= pagesCount; i++) {
+    pages.push(i);
+  }
+  // карусель пагинации
+  let currentP = currentPage;
+  let currentPageFirst = currentP - 5 < 0 ? 0 : currentP - 5;
+  let currentPageLast = currentP + 5;
+  let slicedPageArr = pages.slice(currentPageFirst, currentPageLast);
 
   return (
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          {/* {userError && <h1>Произошла ошибка {userError}</h1>} */}
-
-          <UsersList 
-          // users={sortedAndSelectedUser} 
-          follow={follow} 
-          unfollow={unfollow} 
-          // remove={removeUser} 
-          />
-          
-          <Row>
-            <Col></Col>
-            {/* <Col><div ref={infFeed} style={{backgroundColor: "#fff"}} /></Col> */}
-            <Col></Col>
+          <Row sm={3}>
+            <InputGroup size="sm" className="mt-3" bg="000">
+              <InputGroup.Text id="inputGroup-sizing-sm">Поиск</InputGroup.Text>
+              <Form.Control aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+            </InputGroup>
           </Row>
-
-          {/* {isUsersLoading && (
-            <div>
-              <Loader />
-            </div>
-          )} */}
-
+          {/* <Row>
+              <Select
+                options={[
+                  { value: "name", name: "По имени" },
+                  { value: "username", name: "По user_name" },
+                ]}
+              />
+            </Row> */}
         </Col>
         <Col>
-          <Row className="mb-3">
-            {/* <UserFilter filter={filter} setFilter={setFilter} /> */}
-          </Row>
-          <Row>
-            {/* <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" 
-            options={[
-              {value: 5, name: "05 пользователей"},
-              {value: 10, name: "10 пользователей"},
-              {value: 15, name: "15 пользователей"},
-              {value: -1, name: "Показать всех пользователей"},
-            ]} /> */}
-          </Row>
+          {users.map((u) => (
+            <Row className={us.item}>
+              <Col>
+                <Row>
+                  <img src={userAva} className={us.ava} />
+                </Row>
+                <Row>
+                  {u.followed ? (
+                    <Button variant="outline-secondary" onClick={() => unfollow(u.id)}>
+                      Вы подписаны
+                    </Button>
+                  ) : (
+                    <Button variant="outline-info" onClick={() => follow(u.id)}>
+                      Подписаться
+                    </Button>
+                  )}
+                </Row>
+              </Col>
+              <Col>
+                Основная инфа
+                <Col>
+                  <Row>{u.name}</Row>
+                  <Row>{u.username}</Row>
+                </Col>
+                <Col>
+                  <Row>{u.website}</Row>
+                </Col>
+              </Col>
+            </Row>
+          ))}
         </Col>
-        <Pagination
-          currentPage={page}
-          // changePage={changePage}
-          totalPages={totalPages}
-        />
+        <Col>
+          <Col className="mt-3">
+            {slicedPageArr.map((p) => {
+              return (
+                <Col className="m-1">
+                  {currentPage === p ? (
+                    <Button variant="outline-warning" className="m-1">
+                      {p}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline-info"
+                      className="m-1"
+                      onClick={(e) => setCurrentPage(p)}>
+                      {p}
+                    </Button>
+                  )}
+                </Col>
+              );
+            })}
+          </Col>
+        </Col>
       </Row>
     </Container>
   );
 };
 
-export default UsersM;
+export default Users;

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import {Container, Col, Row} from "react-bootstrap";
 import { useFetching } from "../../hooks/useFetching";
 import { getPagesCount } from "../../utils/pages";
 import UsersService from "../../API/UsersService";
@@ -19,55 +19,19 @@ const UsersM = ({users, follow, unfollow, setUsers}) => {
   const [totalPages, setTotalPages] = useState(10);
   const [filter, setFilter] = useState({sort: "", query: ""});
 
-  // const infFeed = useRef();
-
-  const sortedAndSelectedUser = useUsers(users, filter.sort, filter.query);
-  
-  // const sortedUsers = useMemo(() => {
-  //   if(filter.sort) {
-  //     return [...users].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
-  //   }
-  //   return users;
-  // }, [filter.sort, users]);
-
-  // const sortedAndSelectedUser = useMemo(() => {
-  //   return sortedUsers.filter(user => user.username.toLowerCase().includes(filter.query.toLowerCase()))
-  // }, [filter.query, sortedUsers]);
-
-  const [fetchUsers, isUsersLoading, userError] = useFetching(
-    async (limit, page) => {
-      const response = await UsersService.getAllUsers(limit, page);
-      setUsers([...users, ...response.data])
-      const totalCount = response.headers["x-total-count"];
-      setTotalPages(getPagesCount(totalCount, limit));
-    }
-  );
-
-  // useOberver(infFeed, page < totalPages, isUsersLoading, () => setPage(page + 1))
-
-  useEffect(() => {
-    fetchUsers(limit, page);
-  }, [page, limit]);
-
-  let removeUser = (user) => {
-    setUsers(users.filter(u => u.id !== user.id))
-  }; 
-
-  let changePage = (user) => {
-    setPage(user);
-  };
 
   return (
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          {userError && <h4>Произошла ошибка: {userError}</h4>}
+          {/* {userError && <h1>Произошла ошибка {userError}</h1>} */}
 
           <UsersList 
-          users={users} 
+          // users={sortedAndSelectedUser} 
           follow={follow} 
           unfollow={unfollow} 
-          remove={removeUser} />
+          // remove={removeUser} 
+          />
           
           <Row>
             <Col></Col>
@@ -75,30 +39,30 @@ const UsersM = ({users, follow, unfollow, setUsers}) => {
             <Col></Col>
           </Row>
 
-          {isUsersLoading && (
+          {/* {isUsersLoading && (
             <div>
               <Loader />
             </div>
-          )}
+          )} */}
 
         </Col>
         <Col>
           <Row className="mb-3">
-            <UserFilter filter={filter} setFilter={setFilter} />
+            {/* <UserFilter filter={filter} setFilter={setFilter} /> */}
           </Row>
           <Row>
-            <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" 
+            {/* <Select value={limit} onChange={value => setLimit(value)} defaultValue="Выберите количество выводимых пользователей" 
             options={[
               {value: 5, name: "05 пользователей"},
               {value: 10, name: "10 пользователей"},
               {value: 15, name: "15 пользователей"},
               {value: -1, name: "Показать всех пользователей"},
-            ]} />
+            ]} /> */}
           </Row>
         </Col>
         <Pagination
           currentPage={page}
-          changePage={changePage}
+          // changePage={changePage}
           totalPages={totalPages}
         />
       </Row>
