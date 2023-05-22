@@ -11,8 +11,8 @@ export default class UsersService {
         return response;
     }
 
-    static async getUserById(id) {
-        const response = await axios.get('https://social-network.samuraijs.com/api/1.0/users/' + id);
+    static async getUserById(userId) {
+        const response = await axios.get('https://social-network.samuraijs.com/api/1.0/users/' + userId);
         return response;
     }
 }

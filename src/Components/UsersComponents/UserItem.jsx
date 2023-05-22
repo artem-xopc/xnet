@@ -34,7 +34,7 @@ function UserItem({ user, remove, follow, unfollow }) {
               )}
               <Button
                 variant="outline-warning"
-                onClick={() => router(`/user/${user.id}`)}
+                onClick={() => router(`/profile/${user.id}`)}
                 style={{ marginLeft: '5px' }}>
                 Открыть профиль
               </Button>

@@ -1,3 +1,4 @@
+import ProfileItem from "../Components/ProfileComponents/ProfileItem";
 import About from "../Pages/About"
 import Articles from "../Pages/Articles"
 import Blog from "../Pages/Blog";
@@ -18,6 +19,7 @@ export const publicRoutes = [
     {path: "/blog", element: Blog},
     {path: "/shop", element: Shop},
     {path: "/signup", element: SignUp},
+    {path: "/profile/:id", element: ProfileItem},
 ];
 
 export const privateRoutes = [
@@ -27,5 +29,5 @@ export const privateRoutes = [
     {path: "/about", element: About},
     {path: "/login", element: Login},
     {path: "/users", element: Users},
-    // {path: "/cabinet/:id", element: Cabinet},
+    // {path: "/user/:id", element: ProfileItem},
 ];
