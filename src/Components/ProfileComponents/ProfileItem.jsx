@@ -29,8 +29,7 @@ const ProfileItem = (props) => {
           <Row>
             <h3>Основная информация</h3>
           </Row>
-          
-          
+                 
           <Row><img src={userAva} className={us.ava} /></Row>
           <Row>
             {/* <Row>ID пользователя: {user.userId}</Row> */}
