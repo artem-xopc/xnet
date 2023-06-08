@@ -2,7 +2,7 @@ import { Button, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
 import us from './Users.module.css';
 import userAva from '../../styles/images/avatars/users_ava3.png';
 
-const Users = ({users, totalCount, totalPages, currentPage, follow, unfollow, setCurrentPage}) => {
+const Users = ({ users, totalCount, totalPages, currentPage, follow, unfollow }) => {
   //пагинация
   let pagesCount = Math.ceil(totalCount / totalPages);
   let pages = [];
@@ -79,7 +79,8 @@ const Users = ({users, totalCount, totalPages, currentPage, follow, unfollow, se
                     <Button
                       variant="outline-info"
                       className="m-1"
-                      onClick={(e) => setCurrentPage(p)}>
+                      onClick={(e) => setCurrentPage(p)}
+                    >
                       {p}
                     </Button>
                   )}

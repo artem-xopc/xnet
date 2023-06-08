@@ -1,13 +1,13 @@
 import { Container, Row } from 'react-bootstrap';
 import UsersContainer from '../Components/UsersComponents/UsersContainer';
-import UsersM from '../Components/UsersComponents/UsersExp';
+import UsersM from '../Components/UsersComponents/UsersM';
 
 const Users = () => {
   return (
     <Container>
       <Row>
-        {/* <UsersContainer /> */}
-        <UsersM />
+        <UsersContainer />
+        {/* <UsersM /> */}
       </Row>
     </Container>
   );

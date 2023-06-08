@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useFetching } from '../../hooks/useFetching';
 import UsersService from '../../API/UsersService';
-import Loader from '../UI/Loader/Loader';
 import { useNavigate, useParams } from 'react-router-dom';
 import userAva from '../../styles/images/avatars/users_ava3.png';
 import us from '../UsersComponents/Users.module.css';
 import axios from 'axios';
+import Loader from '../UI/Loader/Loader';
 
 const ProfileItem = (props) => {
   const [user, setUser] = useState({});
@@ -20,37 +20,37 @@ const ProfileItem = (props) => {
   });
 
   useEffect(() => {
-    // const fetchUser = async (userId) => {
-    //   const resultFetch = await axios.get(
-    //     'https://social-network.samuraijs.com/api/1.0/users/' + userId,
-    //   );
-    //   setUser(resultFetch.data);
-    // };
     fetchUserById(params.id);
   }, []);
 
   return (
     <Container>
-      <Row className={us.profile__main}>
-        <Row>
-          <h3>Основная информация</h3>
-        </Row>
+      {userError && <h4>Произошла ошибка -_- {userError}</h4>}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Row className={us.profile__main}>
+          <Row>
+            <h3>Основная информация</h3>
+          </Row>
 
-        <Row>
-          <img src={userAva} className={us.ava} />
-        </Row>
-        <Row>
+          <Row>
+            <img src={userAva} className={us.ava} />
+          </Row>
           <Row>ID пользователя: {user.id}</Row>
-          <Row> Имя пользователя: {user.name}</Row>
-        </Row>
-        <Row>Статус пользователя: {}</Row>
-        <Row>Уровень пользователя: </Row>
-        <Row>Обо мне: </Row>
+          <Row>Username: {user.username}</Row>
+          <Row style={{ marginBottom: '15px' }}>Имя пользователя: {user.name}</Row>
+          <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
+          <Row>Уровень пользователя: 22 </Row>
+          {/* <Row>Обо мне: </Row> */}
 
-        <Col style={{ marginTop: '15px' }}>
-          <Button onClick={() => router('/users')}>Вернуться</Button>
-        </Col>
-      </Row>
+          <Col style={{ marginTop: '15px' }}>
+            <Button variant="outline-info" onClick={() => router('/users')}>
+              Вернуться
+            </Button>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };

@@ -13,13 +13,13 @@ import UserFilter from './UsersFilter';
 import { useUsers } from '../../hooks/useUsers';
 import Search from '../UI/Search/Search';
 
-const UsersM = ({ follow, unfollow }) => {
+const UsersM = (props) => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [totalPages, setTotalPages] = useState(10);
+  const [totalCount, setTotalCount] = useState(0);
   const [filter, setFilter] = useState({ sort: '', query: '' });
-  // const [totalCount, setTotalCount] = useState(0);
 
   const [fetchUsers, isUsersLoading, userError] = useFetching(async (limit, page) => {
     const response = await UsersService.getAllUsers(limit, page);
@@ -43,11 +43,12 @@ const UsersM = ({ follow, unfollow }) => {
           ) : (
             <UsersList
               users={users}
-              follow={follow}
-              unfollow={unfollow}
+              follow={props.follow}
+              unfollow={props.unfollow}
               totalPages={totalPages}
-              // totalCount={totalCount}
+              totalCount={totalCount}
               page={page}
+              setCurrentPage={props.setCurrentPage}
               // remove={removeUser}
             />
           )}

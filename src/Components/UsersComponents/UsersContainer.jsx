@@ -1,67 +1,91 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import { follow, setFetchingStatus, setPage, setTotalCount, setUsers, unFollow,} from '../../redux/user_reducer';
-// import Users from './Users';
-// import axios from 'axios';
-// import Loader from '../UI/Loader/Loader';
-// import UsersList from './UsersList';
+import { connect } from 'react-redux';
+import {
+  follow,
+  setFetchingStatus,
+  setPage,
+  setTotalCount,
+  setUsers,
+  unFollow,
+} from '../../redux/user_reducer';
+import { Col, Container, Row } from 'react-bootstrap';
+import UsersList from './UsersList';
+import Loader from '../UI/Loader/Loader';
+import axios from 'axios';
+import UsersService from '../../API/UsersService';
 
-// class UsersContainer extends React.Component {
-//   componentDidMount() {
-//     this.props.setFetchingStatus(true);
-//     axios
-//       .get(
-//         `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.totalCount}`,
-//       )
-//       .then((response) => {
-//         this.props.setFetchingStatus(false);
-//         this.props.setUsers(response.data.items);
-//         this.props.setTotalCount(response.data.totalCount);
-//       });
-//   }
+const UsersContainer = async (props) => {
+  debugger;
 
-//   setCurrentPage = (pageNumber) => {
-//     this.props.setPage(pageNumber);
-//     this.props.setFetchingStatus(true);
-//     axios
-//       .get(
-//         `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.totalCount}`,
-//       )
-//       .then((response) => {
-//         this.props.setFetchingStatus(false);
-//         this.props.setUsers(response.data.items);
-//       });
-//   };
+  // const [fetchUsers, isUsersLoading, userError] = useFetching(async (limit, page) => {
+  //   const response = await UsersService.getAllUsers(limit, page);
+  //   props.setUsers([...props.users, ...response.data]);
+  //   const totalCount = response.headers['x-total-count'];
+  //   setTotalPages(getPagesCount(totalCount, limit));
+  // });
 
-//   render() {
-//     return (
-//       <>
-//         {this.props.isFetching ? (
-//           <Loader />
-//         ) : (
-//           <UsersList
-//             users={this.props.users}
-//             totalCount={this.props.totalCount}
-//             totalPages={this.props.totalPages}
-//             currentPage={this.props.currentPage}
-//             follow={this.props.follow}
-//             unfollow={this.props.unfollow}
-//             setCurrentPage={this.setCurrentPage}
-//           />
-//         )}
-//       </>
-//     );
-//   }
-// }
+  // const response = await axios
+  //   .get(
+  //     `https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.totalCount}`,
+  //   )
+  //   .then((res) => {
+  //     props.setFetchingStatus(false);
+  //     props.setUsers(res.data.items);
+  //     props.setTotalCount(res.data.totalCount);
+  //   });
 
-// const mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-//     totalPages: state.usersPage.totalPages,
-//     totalCount: state.usersPage.totalCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//   };
-// };
+  const setCurrentPage = (pageNumber) => {
+    props.setPage(pageNumber);
+    props.setFetchingStatus(true);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${props.totalCount}`,
+      )
+      .then((res) => {
+        props.setFetchingStatus(false);
+        props.setUsers(res.data.items);
+      });
+  };
 
-// export default connect(mapStateToProps, { follow, unFollow, setUsers, setPage, setTotalCount, setFetchingStatus, })(UsersContainer);
+  return (
+    <Container>
+      {props.isFetching ? (
+        <Loader />
+      ) : (
+        <Row>
+          <UsersList
+            users={props.users}
+            totalCount={props.totalCount}
+            totalPages={props.totalPages}
+            currentPage={props.currentPage}
+            follow={props.follow}
+            unfollow={props.unfollow}
+            setCurrentPage={setCurrentPage}
+          />
+        </Row>
+      )}
+
+      <Row>
+        <Col></Col>
+      </Row>
+    </Container>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.usersPage.users,
+    totalPages: state.usersPage.totalPages,
+    totalCount: state.usersPage.totalCount,
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching,
+  };
+};
+
+export default connect(mapStateToProps, {
+  follow,
+  unFollow,
+  setUsers,
+  setPage,
+  setTotalCount,
+  setFetchingStatus,
+})(UsersContainer);

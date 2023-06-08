@@ -4,12 +4,12 @@ import UserItem from './UserItem';
 const UsersList = ({
   totalCount,
   totalPages,
-  currentPage,
-  setCurrentPage,
   users,
   follow,
   unfollow,
   remove,
+  page,
+  setCurrentPage,
 }) => {
   if (!users.length) {
     return (
@@ -26,9 +26,9 @@ const UsersList = ({
     pages.push(i);
   }
   // карусель пагинации
-  let currentP = currentPage;
-  let currentPageFirst = currentP - 5 < 0 ? 0 : currentP - 5;
-  let currentPageLast = currentP + 5;
+  let currentPage = page;
+  let currentPageFirst = currentPage - 5 < 0 ? 0 : currentPage - 5;
+  let currentPageLast = currentPage + 5;
   let slicedPageArr = pages.slice(currentPageFirst, currentPageLast);
 
   return (
@@ -38,7 +38,7 @@ const UsersList = ({
           {slicedPageArr.map((p) => {
             return (
               <Col className="m-1">
-                {currentPage === p ? (
+                {page === p ? (
                   <Button variant="outline-warning" className="m-1">
                     {p}
                   </Button>
@@ -65,12 +65,12 @@ const UsersList = ({
             ))}
           </Col>
           <Col>
-            <Row sm={3}>
+            {/* <Row>
               <InputGroup size="sm" className="mt-3" bg="000">
                 <InputGroup.Text id="inputGroup-sizing-sm">Поиск</InputGroup.Text>
                 <Form.Control aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
               </InputGroup>
-            </Row>
+            </Row> */}
           </Col>
         </Row>
       </Col>
