@@ -9,48 +9,43 @@ import axios from 'axios';
 import Loader from '../UI/Loader/Loader';
 
 const ProfileItem = (props) => {
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   const params = useParams();
 
   const router = useNavigate();
 
-  const [fetchUserById, isLoading, userError] = useFetching(async (id) => {
-    const response = await UsersService.getUserById(id);
-    setUser(response.data);
-  });
+  // const [fetchUserById, isLoading, userError] = useFetching(async (id) => {
+  //   const response = await UsersService.getUserById(id);
+  //   setUser(response.data);
+  // });
 
-  useEffect(() => {
-    fetchUserById(params.id);
-  }, []);
+  // useEffect(() => {
+  //   fetchUserById(params.id);
+  // }, []);
 
   return (
     <Container>
-      {userError && <h4>Произошла ошибка -_- {userError}</h4>}
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Row className={us.profile__main}>
-          <Row>
-            <h3>Основная информация</h3>
-          </Row>
-
-          <Row>
-            <img src={userAva} className={us.ava} />
-          </Row>
-          <Row>ID пользователя: {user.id}</Row>
-          <Row>Username: {user.username}</Row>
-          <Row style={{ marginBottom: '15px' }}>Имя пользователя: {user.name}</Row>
-          <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
-          <Row>Уровень пользователя: 22 </Row>
-          {/* <Row>Обо мне: </Row> */}
-
-          <Col style={{ marginTop: '15px' }}>
-            <Button variant="outline-info" onClick={() => router('/users')}>
-              Вернуться
-            </Button>
-          </Col>
+      <Row className={us.profile__main}>
+        <Row>
+          <h3>Основная информация</h3>
         </Row>
-      )}
+
+        <Row>
+          <img src={userAva} className={us.ava} />
+        </Row>
+        {/* <Row>ID пользователя: {props.user.userId}</Row> */}
+        {/* <Row>Username: {props.user.username}</Row> */}
+        <Row style={{ marginBottom: '15px' }}>Имя пользователя: {props.user.name}</Row>
+        <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
+        <Row>Уровень пользователя: 22 </Row>
+        <Row>Обо мне: {props.user.about}</Row>
+
+        <Col style={{ marginTop: '15px' }}>
+          <Button variant="outline-info" onClick={() => router('/users')}>
+            Вернуться
+          </Button>
+        </Col>
+      </Row>
     </Container>
   );
 };

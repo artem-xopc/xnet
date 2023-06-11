@@ -1,7 +1,13 @@
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
-    profile: null,
+    profile: {
+      userId: 0,
+      name: "Artem",
+      username: "Artem Xopc",
+      status: "*!&#)%^%!*$(!_(!*%#^!",
+      about: "Вечно потеющий в муках и ищущий новое front-end разработчик",
+    }
 };
 
 const profileReducer = (state = initialState, action) => {

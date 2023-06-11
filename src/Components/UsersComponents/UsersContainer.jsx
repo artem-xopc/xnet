@@ -11,27 +11,30 @@ import { Col, Container, Row } from 'react-bootstrap';
 import UsersList from './UsersList';
 import Loader from '../UI/Loader/Loader';
 import axios from 'axios';
-import UsersService from '../../API/UsersService';
+import Users_SNJS_Service from '../../API/Users_SNJS_Service';
+import { useFetching } from '../../hooks/useFetching';
+import { useState } from 'react';
+import { getPagesCount } from '../../utils/pages';
 
 const UsersContainer = async (props) => {
-  debugger;
-
-  // const [fetchUsers, isUsersLoading, userError] = useFetching(async (limit, page) => {
-  //   const response = await UsersService.getAllUsers(limit, page);
+  // const [fetchUsers, isUsersLoading, userError] = useFetching(async (totalCount, currentPage) => {
+  //   const response = await Users_SNJS_Service.getAllUsers(totalCount, currentPage);
   //   props.setUsers([...props.users, ...response.data]);
-  //   const totalCount = response.headers['x-total-count'];
-  //   setTotalPages(getPagesCount(totalCount, limit));
+  //   const resultCount = response.headers['x-total-count'];
+  //   setTotalPages(getPagesCount(resultCount, totalCount));
   // });
 
-  // const response = await axios
-  //   .get(
-  //     `https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.totalCount}`,
-  //   )
-  //   .then((res) => {
-  //     props.setFetchingStatus(false);
-  //     props.setUsers(res.data.items);
-  //     props.setTotalCount(res.data.totalCount);
-  //   });
+  // const response = async () => {
+  //   await axios
+  //     .get(
+  //       `https://social-network.samuraijs.com/api/1.0/users?page=${props.currentPage}&count=${props.totalCount}`,
+  //     )
+  //     .then((res) => {
+  //       props.setFetchingStatus(false);
+  //       props.setUsers(res.data.items);
+  //       props.setTotalCount(res.data.totalCount);
+  //     });
+  // };
 
   const setCurrentPage = (pageNumber) => {
     props.setPage(pageNumber);

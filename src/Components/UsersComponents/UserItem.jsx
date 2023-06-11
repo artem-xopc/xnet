@@ -6,22 +6,26 @@ import { Link } from 'react-router-dom';
 
 function UserItem({ user, remove, follow, unfollow }) {
   const router = useNavigate();
-  debugger;
+
   return (
     <Container className={us.item}>
       <Row>
-        <Nav.Link as={Link} to={'/profile/' + user.id}>
-          <img src={userAva} className={us.ava} />
-        </Nav.Link>
-
+        <Col>
+          <Nav.Link as={Link} to={'/profile/' + user.id}>
+            <img src={userAva} className={us.ava} />
+          </Nav.Link>
+        </Col>
+      </Row>
+      <Row>
         <Col md="auto">
           <Row>Основная информация:</Row>
           <Row>id: {user.id}</Row>
           <Row>Имя: {user.name}</Row>
-
-          <Row>
-            <Col>
-              {user.followed ? (
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/* {user.followed ? (
                 <Button variant="outline-secondary" onClick={() => unfollow(user.id)}>
                   Вы подписаны
                 </Button>
@@ -29,16 +33,14 @@ function UserItem({ user, remove, follow, unfollow }) {
                 <Button variant="outline-info" onClick={() => follow(user.id)}>
                   Подписаться
                 </Button>
-              )}
-              <Button
-                variant="outline-warning"
-                onClick={() => router(`/profile/${user.id}`)}
-                style={{ marginLeft: '5px' }}
-              >
-                Открыть профиль
-              </Button>
-            </Col>
-          </Row>
+              )} */}
+          <Button
+            variant="outline-warning"
+            onClick={() => router(`/profile/${user.id}`)}
+            // style={{ marginLeft: '5px' }}
+          >
+            Открыть профиль
+          </Button>
         </Col>
       </Row>
     </Container>
