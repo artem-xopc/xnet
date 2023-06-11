@@ -12,6 +12,7 @@ import { useOberver } from '../../hooks/useObserver';
 import UserFilter from './UsersFilter';
 import { useUsers } from '../../hooks/useUsers';
 import Search from '../UI/Search/Search';
+// import Users_SNJS_Service from '../../API/Users_SNJS_Service';
 
 const UsersM = (props) => {
   const [users, setUsers] = useState([]);
@@ -36,7 +37,7 @@ const UsersM = (props) => {
     <Container>
       <Row className={us.wrapper}>
         <Col>
-          {userError && <h1>Произошла ошибка {userError}</h1>}
+          {userError && <h4>Произошла ошибка {userError}</h4>}
 
           {isUsersLoading ? (
             <Loader />

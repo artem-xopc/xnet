@@ -46,6 +46,7 @@ class UsersContainer extends React.Component {
           <Loader />
         ) : (
           <UsersList
+            key={this.props.users.id}
             users={this.props.users}
             totalCount={this.props.totalCount}
             totalPages={this.props.totalPages}

@@ -7,21 +7,19 @@ import userAva from '../../styles/images/avatars/users_ava3.png';
 import us from '../UsersComponents/Users.module.css';
 import axios from 'axios';
 import Loader from '../UI/Loader/Loader';
+import Users_SNJS_Service from '../../API/Users_SNJS_Service';
 
 const ProfileItem = (props) => {
-  // const [user, setUser] = useState({});
-  const params = useParams();
-
+  debugger;
   const router = useNavigate();
 
-  // const [fetchUserById, isLoading, userError] = useFetching(async (id) => {
-  //   const response = await UsersService.getUserById(id);
-  //   setUser(response.data);
-  // });
-
-  // useEffect(() => {
-  //   fetchUserById(params.id);
-  // }, []);
+  let profile = {
+    userId: 0,
+    name: 'Artem',
+    username: 'Artem Xopc',
+    status: '*!&#)%^%!*$(!_(!*%#^!',
+    about: 'Вечно потеющий в муках и ищущий новое. Front-end разработчик',
+  };
 
   return (
     <Container>
@@ -29,16 +27,21 @@ const ProfileItem = (props) => {
         <Row>
           <h3>Основная информация</h3>
         </Row>
-
-        <Row>
-          <img src={userAva} className={us.ava} />
-        </Row>
-        {/* <Row>ID пользователя: {props.user.userId}</Row> */}
-        {/* <Row>Username: {props.user.username}</Row> */}
-        <Row style={{ marginBottom: '15px' }}>Имя пользователя: {props.user.name}</Row>
-        <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
-        <Row>Уровень пользователя: 22 </Row>
-        <Row>Обо мне: {props.user.about}</Row>
+        {/* {isLoading ? (
+          <Loader />
+        ) : ( */}
+        <div>
+          <Row>
+            <img src={userAva} className={us.ava} />
+          </Row>
+          <Row>ID пользователя: {profile.userId}</Row>
+          <Row>Username: {profile.username}</Row>
+          <Row style={{ marginBottom: '15px' }}>Имя пользователя: {profile.name}</Row>
+          <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
+          <Row>Уровень пользователя: 22 </Row>
+          <Row>Обо мне: {profile.about}</Row>
+        </div>
+        {/* )} */}
 
         <Col style={{ marginTop: '15px' }}>
           <Button variant="outline-info" onClick={() => router('/users')}>

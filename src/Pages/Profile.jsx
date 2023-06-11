@@ -1,12 +1,12 @@
-import { Container } from "react-bootstrap";
-import ProfileContainer from "../Components/ProfileComponents/ProfileContainer";
+import { Container } from 'react-bootstrap';
+import ProfileContainer from '../Components/ProfileComponents/ProfileContainer';
 
 const Profile = () => {
-    return (
-        <Container>
-            <ProfileContainer />
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <ProfileContainer />
+    </Container>
+  );
+};
 
 export default Profile;
