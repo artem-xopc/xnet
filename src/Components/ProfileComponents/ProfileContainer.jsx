@@ -9,13 +9,13 @@ function ProfileContainer(props) {
   const params = useParams();
   debugger;
 
-  const [fetchUserById, isLoading, userError] = useFetching(async (id) => {
-    const response = await Users_SNJS_Service.getUserById(id);
+  const [fetchUserById, isLoading, userError] = useFetching(async (userId) => {
+    const response = await Users_SNJS_Service.getUserById(userId);
     setProfile(response.data);
   });
 
   useEffect(() => {
-    fetchUserById(params.id);
+    fetchUserById(params.userId);
   }, []);
 
   return <ProfileItem profile={profile} />;

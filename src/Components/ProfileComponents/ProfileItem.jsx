@@ -9,45 +9,91 @@ import axios from 'axios';
 import Loader from '../UI/Loader/Loader';
 import Users_SNJS_Service from '../../API/Users_SNJS_Service';
 
-const ProfileItem = (props) => {
+const ProfileItem = (
+  {
+    // profile
+  },
+) => {
   debugger;
+  const [profile, setProfile] = useState({});
   const router = useNavigate();
+  const params = useParams();
 
-  let profile = {
-    userId: 0,
-    name: 'Artem',
-    username: 'Artem Xopc',
-    status: '*!&#)%^%!*$(!_(!*%#^!',
-    about: 'Вечно потеющий в муках и ищущий новое. Front-end разработчик',
-  };
+  const [fetchProfileById, isProfileLoading, profileError] = useFetching(async (id) => {
+    const proResponse = await UsersService.getUserById(id);
+    setProfile(proResponse.data);
+  });
+
+  useEffect(() => {
+    fetchProfileById(params.id);
+  }, {});
+
+  let podskazka =
+    'Попробовать сделать запрос к API в данной компоненте. Начать стоит с jsonplaceholder, если получится, то перейти на API social network.';
+
+  // let profile = {
+  //   userId: 0,
+  //   name: 'Artem',
+  //   username: 'Artem Xopc',
+  //   status: '*!&#)%^%!*$(!_(!*%#^!',
+  //   about: 'Вечно потеющий в муках и ищущий новое. Front-end разработчик',
+  // };
 
   return (
     <Container>
       <Row className={us.profile__main}>
-        <Row>
-          <h3>Основная информация</h3>
-        </Row>
-        {/* {isLoading ? (
-          <Loader />
-        ) : ( */}
-        <div>
-          <Row>
-            <img src={userAva} className={us.ava} />
-          </Row>
-          <Row>ID пользователя: {profile.userId}</Row>
-          <Row>Username: {profile.username}</Row>
-          <Row style={{ marginBottom: '15px' }}>Имя пользователя: {profile.name}</Row>
-          <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
-          <Row>Уровень пользователя: 22 </Row>
-          <Row>Обо мне: {profile.about}</Row>
-        </div>
-        {/* )} */}
+        {profileError ? (
+          <h4>Произошла ошибка при загрузке профиля: {profileError}</h4>
+        ) : (
+          <div>
+            <Row>
+              <h3>Основная информация</h3>
+            </Row>
+            {isProfileLoading ? (
+              <Loader />
+            ) : (
+              <div>
+                {profile.photo ? (
+                  <Row>
+                    <img src={profile.photo} className={us.ava} />
+                  </Row>
+                ) : (
+                  <Row>
+                    <img src={userAva} className={us.ava} />
+                  </Row>
+                )}
 
-        <Col style={{ marginTop: '15px' }}>
-          <Button variant="outline-info" onClick={() => router('/users')}>
-            Вернуться
-          </Button>
-        </Col>
+                <Row>ID пользователя: {profile.id}</Row>
+                <Row>Username: {profile.username}</Row>
+                <Row style={{ marginBottom: '15px' }}>Имя пользователя: {profile.name}</Row>
+
+                {profile.status === undefined ? (
+                  <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
+                ) : (
+                  <Row>Статус пользователя: {profile.status}</Row>
+                )}
+
+                {profile.level === undefined ? (
+                  <Row>Уровень пользователя: 0 </Row>
+                ) : (
+                  <Row>Уровень пользователя: {profile.level} </Row>
+                )}
+
+                {profile.about === undefined ? (
+                  <Row>Обо мне: {'**)(%?&(%)&(!@$#&)$*?!*'}</Row>
+                ) : (
+                  <Row>Обо мне: {profile.about}</Row>
+                )}
+              </div>
+            )}
+
+            <Col style={{ marginTop: '15px' }}>
+              <Button variant="outline-info" onClick={() => router('/users')}>
+                Вернуться
+              </Button>
+            </Col>
+          </div>
+        )}
       </Row>
     </Container>
   );
