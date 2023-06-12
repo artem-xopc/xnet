@@ -8,24 +8,20 @@ import us from '../UsersComponents/Users.module.css';
 import axios from 'axios';
 import Loader from '../UI/Loader/Loader';
 import Users_SNJS_Service from '../../API/Users_SNJS_Service';
+import InitialProfile from './InitialProfile';
 
-const ProfileItem = (
-  {
-    // profile
-  },
-) => {
-  debugger;
+const ProfileItem = (props) => {
   const [profile, setProfile] = useState({});
   const router = useNavigate();
   const params = useParams();
-
-  const [fetchProfileById, isProfileLoading, profileError] = useFetching(async (id) => {
-    const proResponse = await UsersService.getUserById(id);
-    setProfile(proResponse.data);
+  debugger;
+  const [fetchProfileById, isProfileLoading, profileError] = useFetching(async (userId) => {
+    const proResponse = await Users_SNJS_Service.getUserById(userId);
+    setProfile(proResponse.data.items);
   });
 
   useEffect(() => {
-    fetchProfileById(params.id);
+    fetchProfileById(params.userId);
   }, {});
 
   let podskazka =
@@ -43,7 +39,15 @@ const ProfileItem = (
     <Container>
       <Row className={us.profile__main}>
         {profileError ? (
-          <h4>Произошла ошибка при загрузке профиля: {profileError}</h4>
+          <div>
+            <h4>Произошла ошибка при загрузке профиля: {profileError}</h4>
+            <InitialProfile />
+            <Col style={{ marginTop: '15px' }}>
+              <Button variant="outline-info" onClick={() => router('/users')}>
+                Вернуться
+              </Button>
+            </Col>
+          </div>
         ) : (
           <div>
             <Row>

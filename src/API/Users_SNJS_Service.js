@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class Users_SNJS_Service {
-  static async getAllUsersgetAll(limit = 10, page = 1) {
+  static async getAllUsers(limit = 10, page = 1) {
     const response = await axios.get('https://social-network.samuraijs.com/api/1.0/users', {
       params: {
         _count: limit,

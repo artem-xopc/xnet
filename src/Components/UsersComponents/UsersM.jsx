@@ -12,7 +12,7 @@ import { useOberver } from '../../hooks/useObserver';
 import UserFilter from './UsersFilter';
 import { useUsers } from '../../hooks/useUsers';
 import Search from '../UI/Search/Search';
-// import Users_SNJS_Service from '../../API/Users_SNJS_Service';
+import Users_SNJS_Service from '../../API/Users_SNJS_Service';
 
 const UsersM = (props) => {
   const [users, setUsers] = useState([]);
@@ -23,8 +23,8 @@ const UsersM = (props) => {
   const [filter, setFilter] = useState({ sort: '', query: '' });
 
   const [fetchUsers, isUsersLoading, userError] = useFetching(async (limit, page) => {
-    const response = await UsersService.getAllUsers(limit, page);
-    setUsers([...users, ...response.data]);
+    const response = await Users_SNJS_Service.getAllUsers(limit, page);
+    setUsers([...users, ...response.data.items]);
     const totalCount = response.headers['x-total-count'];
     setTotalPages(getPagesCount(totalCount, limit));
   });
