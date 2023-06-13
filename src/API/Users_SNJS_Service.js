@@ -13,7 +13,7 @@ export default class Users_SNJS_Service {
 
   static async getUserById(userId) {
     const response = await axios.get(
-      'https://social-network.samuraijs.com/api/1.0/users/' + userId,
+      `https://social-network.samuraijs.com/api/1.0/profile/${userId}`,
     );
     return response;
   }

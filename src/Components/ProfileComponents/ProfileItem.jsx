@@ -14,26 +14,17 @@ const ProfileItem = (props) => {
   const [profile, setProfile] = useState({});
   const router = useNavigate();
   const params = useParams();
+
   debugger;
-  const [fetchProfileById, isProfileLoading, profileError] = useFetching(async (userId) => {
-    const proResponse = await Users_SNJS_Service.getUserById(userId);
-    setProfile(proResponse.data.items);
+
+  const [fetchProfileById, isProfileLoading, profileError] = useFetching(async (id) => {
+    const proResponse = await Users_SNJS_Service.getUserById(id);
+    setProfile(proResponse.data);
   });
 
   useEffect(() => {
-    fetchProfileById(params.userId);
+    fetchProfileById(params.id);
   }, {});
-
-  let podskazka =
-    'Попробовать сделать запрос к API в данной компоненте. Начать стоит с jsonplaceholder, если получится, то перейти на API social network.';
-
-  // let profile = {
-  //   userId: 0,
-  //   name: 'Artem',
-  //   username: 'Artem Xopc',
-  //   status: '*!&#)%^%!*$(!_(!*%#^!',
-  //   about: 'Вечно потеющий в муках и ищущий новое. Front-end разработчик',
-  // };
 
   return (
     <Container>
@@ -57,9 +48,9 @@ const ProfileItem = (props) => {
               <Loader />
             ) : (
               <div>
-                {profile.photo ? (
+                {profile.photos === null ? (
                   <Row>
-                    <img src={profile.photo} className={us.ava} />
+                    <img src={profile.photos.large} className={us.ava} />
                   </Row>
                 ) : (
                   <Row>
@@ -67,9 +58,10 @@ const ProfileItem = (props) => {
                   </Row>
                 )}
 
-                <Row>ID пользователя: {profile.id}</Row>
-                <Row>Username: {profile.username}</Row>
-                <Row style={{ marginBottom: '15px' }}>Имя пользователя: {profile.name}</Row>
+                <Row>ID пользователя: {profile.userId}</Row>
+                <Row style={{ marginBottom: '15px' }}>Username: {profile.fullName}</Row>
+                {/* <Row>Поиск работы: {profile.lookingForAJob}</Row> */}
+                <Row>Интерес к работе: {profile.lookingForAJobDescription}</Row>
 
                 {profile.status === undefined ? (
                   <Row>Статус пользователя: {'@*$!)%&#)@!'}</Row>
@@ -83,11 +75,21 @@ const ProfileItem = (props) => {
                   <Row>Уровень пользователя: {profile.level} </Row>
                 )}
 
-                {profile.about === undefined ? (
+                {profile.about !== undefined ? (
                   <Row>Обо мне: {'**)(%?&(%)&(!@$#&)$*?!*'}</Row>
                 ) : (
-                  <Row>Обо мне: {profile.about}</Row>
+                  <Row>Обо мне: {profile.aboutMe}</Row>
                 )}
+
+                <Row>Контакты:</Row>
+                {/* {profile.contacts.map((con) => (
+                  <div>
+                    <Row>- {con.vk}</Row>
+                    <Row>- {con.facebook}</Row>
+                    <Row>- {con.instagram}</Row>
+                    <Row>- {con.github}</Row>
+                  </div>
+                ))} */}
               </div>
             )}
 
